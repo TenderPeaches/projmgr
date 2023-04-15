@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  start_time: 2023-04-15 08:41:19
+  end_time: 2023-04-15 08:41:19
+  name: MyString
+  notes: MyText
+  task_id: 1
+
+two:
+  project_id: 1
+  start_time: 2023-04-15 08:41:19
+  end_time: 2023-04-15 08:41:19
+  name: MyString
+  notes: MyText
+  task_id: 1
