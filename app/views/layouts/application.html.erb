@@ -11,7 +11,21 @@
   </head>
 
   <body>
-    <%= yield :header %>
+    <header class="nav">
+      <%= render "layouts/header" %>
+    </header>
     <%= yield %>
   </body>
 </html>
+
+<!--% content_for :header do %>
+  <div class="header">
+    <% link_to "Contacts", new_contact_path %>    
+    <% link_to "Clients", new_client_path %>    
+    <% link_to "Projects", new_project_path %>    
+    <% link_to "Events", new_event_path %>    
+    <% link_to "Shifts", new_shift_path %>    
+    <% link_to "Tasks", new_task_path %>    
+    <% link_to "Task Categories", new_task_category_path %>    
+  </div>
+<% end %-->

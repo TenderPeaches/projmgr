@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+ /*:root {
+    --primary: #7995e1;
+    --secondary: #d8a85b;
+
+    --white: #fff;
+    --black: #000;
+ }
+ body {
+    background: linear-gradient(0deg, var(--primary) 5%, var(--white) 60%);
+    background-size: cover;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14pt;
+    margin: 0 10%;
+    min-height: 100vh;
+ }
+
+ header {
+    border-bottom: 2px solid var(--primary);
+    padding: 1em 2em;
+ }
+
+ header a {
+    padding: 0.5em 1em;  
+    text-decoration: none;
+    border: 1px solid transparent;
+    color: var(--black);
+ }
+
+ a {
+ }
+
+ a:hover {
+    color: var(--secondary);
+ }*/

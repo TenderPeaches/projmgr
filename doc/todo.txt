@@ -1,0 +1,7 @@
+*> Create model associations
+*> Ensure assocations integrity
+*> Create test data
+*> Setup Homepage
+*> Adjust CSS
+*> Adjust list display into tables
+*> Show graphs & data interpolations

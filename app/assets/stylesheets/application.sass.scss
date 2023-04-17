@@ -1,0 +1,18 @@
+/* Manifest file to import all stylesheets */
+
+// Mixins
+@import "mixins/media";
+
+// Configuration
+@import "config/variables";
+@import "config/global";
+
+// Components
+@import "components/btn";
+@import "components/error_message";
+@import "components/form";
+@import "components/visually_hidden";
+
+// Layouts
+@import "layouts/container";
+@import "layouts/header";

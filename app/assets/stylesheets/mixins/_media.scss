@@ -1,0 +1,8 @@
+@mixin media($query) {
+    // define media query breakpoints
+    /*
+    @if $query == lg {
+      @media (min-width: 50rem) { @content; }
+    }
+    */
+  }

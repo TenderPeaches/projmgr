@@ -1,0 +1,2 @@
+04/14/2023 ~2 hr DB design, init
+04/15/2023 ~1.5 hr scaffolding, header
