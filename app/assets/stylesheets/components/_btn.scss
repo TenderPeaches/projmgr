@@ -1,3 +1,7 @@
+
+
+@import "../config/variables";
+
 .btn {
   /* Common button attributes */ 
   display: inline-block;
@@ -11,6 +15,7 @@
   cursor: pointer;
   outline: none;
   transition: filter 400ms, color 200ms;
+  text-align: center;
 
   &:hover,
   &:focus,
@@ -21,57 +26,66 @@
 
   /* btn--primary, default button */
   &--primary {
-    color: var(--color-white);
-    background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-alt));
+    color: $color-white;
+    background: linear-gradient($color-primary-dark 75%, $color-primary-alt-dark);
 
+    a {
+      color: $color-white;
+    }
+
+    a:focus,
+    a:active,
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: var(--color-white);
+      color: $color-white;
       filter: saturate(1.4) brightness(115%);
+    }
+    a:hover {
+      color: $color-secondary;
     }
   }
 
   /* btn--secondary, call-to-action */
   &--secondary {
-    color: var(--color-white);
-    background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-alt));
+    color: $color-white;
+    background-image: linear-gradient(to right, $color-secondary), $color-secondary-alt;
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: var(--color-white);
+      color: $color-white;
       filter: saturate(1.2) brightness(110%);
     }
   }
 
   /* btn--light, cancel */
   &--light {
-    color: var(--color-dark);
-    background-color: var(--color-light);
+    color: $color-dark;
+    background-color: $color-light;
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: var(--color-dark);
+      color: $color-dark;
       filter: brightness(92%);
     }
   }
 
   /* btn--dark */
   &--dark {
-    color: var(--color-white);
-    border-color: var(--color-dark);
-    background-color: var(--color-dark);
+    color: $color-white;
+    border-color: $color-dark;
+    background-color: $color-dark;
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: var(--color-white);
+      color: $color-white;
     }
   }
 }

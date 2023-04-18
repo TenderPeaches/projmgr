@@ -1,0 +1,19 @@
+/* Project-specific global configs */
+
+@import "variables";
+
+.content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+
+a {
+    color: $color-primary-darkest;
+    
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-primary-alt-dark;
+  }
+}

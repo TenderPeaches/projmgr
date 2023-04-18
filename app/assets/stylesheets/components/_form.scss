@@ -1,3 +1,6 @@
+
+@import "../config/variables";
+
 .form {
   display: flex;
   flex-wrap: wrap;
@@ -18,11 +21,11 @@
     transition: box-shadow 250ms;
 
     &:focus {
-      box-shadow: 0 0 0 2px var(--color-glint);
+      box-shadow: 0 0 0 2px $color-glint;
     }
 
     &--invalid {
-      border-color: var(--color-primary);
+      border-color: $color-primary;
     }
   }
 }

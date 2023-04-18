@@ -1,4 +1,6 @@
-/* Global styles, default value resets */
+/* Default value resets, should be common to all projects */
+
+@import "../config/variables";
 
 *,
 *::before,
@@ -21,10 +23,10 @@ body {
   flex-direction: column;
   min-height: 100%;
 
-  background-color: var(--color-background);
+  background-color: $color-background;
   color: var(--color-text-body);
   line-height: var(--lh-body);
-  font-family: var(--font-family-sans);
+  font-family: $font-family;
 }
 
 img,
@@ -68,13 +70,6 @@ h4 {
 }
 
 a {
-  color: var(--color-primary);
   text-decoration: none;
   transition: color 200ms;
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-primary-alt);
-  }
 }

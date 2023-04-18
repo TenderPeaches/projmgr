@@ -1,7 +1,10 @@
+
+@import "../config/variables";
+
 .error-message {
   width: 100%;
-  color: var(--color-primary);
-  background-color: var(--color-primary-bg);
+  color: $color-primary;
+  background-color: $color-background;
   padding: var(--space-xs);
   border-radius: var(--border-radius);
 }
