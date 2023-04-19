@@ -11,8 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
-  create_table "clients", force: :cascade do |t|
+  create_table "client_contacts", id: false, force: :cascade do |t|
+    t.integer "client_id"
     t.integer "contact_id"
+    t.index "\"client\", \"contact\"", name: "index_client_contacts_on_client_and_contact"
+    t.index ["client_id"], name: "index_client_contacts_on_client_id"
+    t.index ["contact_id"], name: "index_client_contacts_on_contact_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
     t.string "company_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,30 +36,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "project_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "name"
     t.text "notes"
-    t.integer "task_id"
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"project\"", name: "index_events_on_project"
+    t.index ["project_id"], name: "index_events_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.integer "client_id"
     t.boolean "active"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"client\"", name: "index_projects_on_client"
+    t.index ["client_id"], name: "index_projects_on_client_id"
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.integer "task_id"
     t.integer "minutes"
     t.text "notes"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"task\"", name: "index_shifts_on_task"
+    t.index ["task_id"], name: "index_shifts_on_task_id"
   end
 
   create_table "task_categories", force: :cascade do |t|
@@ -63,9 +75,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer "project_id"
-    t.string "task_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index "\"task_categories\"", name: "index_tasks_on_task_categories"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
+  add_foreign_key "client_contacts", "clients"
+  add_foreign_key "client_contacts", "contacts"
+  add_foreign_key "events", "projects"
+  add_foreign_key "projects", "clients"
+  add_foreign_key "shifts", "tasks"
+  add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "task_categories", column: "category_id"
 end

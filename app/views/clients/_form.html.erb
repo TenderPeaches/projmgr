@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :contact_id, style: "display: block" %>
-    <%= form.number_field :contact_id %>
+    <%= form.collection_select :contact_id, Contact.order(:id), :id, :email %>
   </div>
 
   <div>
