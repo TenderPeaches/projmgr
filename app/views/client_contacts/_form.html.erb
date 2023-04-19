@@ -1,4 +1,4 @@
-<%= form_with(model: client_contact) do |form| %>
+<%= form_with(model: client_contact, html: { class: 'form' }) do |form| %>
   <% if client_contact.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(client_contact.errors.count, "error") %> prohibited this client_contact from being saved:</h2>
@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :contact_id, style: "display: block" %>
-    <%= form.text_field :contact_id %>
+    <%= form.collection_select :contact_id, Contact.order(:id), :id, :email %>
   </div>
 
   <div>
     <%= form.label :client_id, style: "display: block" %>
-    <%= form.text_field :client_id %>
+    <%= form.collection_select :client_id, Client.order(:id), :id, :company_name %>
   </div>
 
   <div>

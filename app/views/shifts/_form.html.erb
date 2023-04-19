@@ -1,4 +1,4 @@
-<%= form_with(model: shift) do |form| %>
+<%= form_with(model: shift, html: { class: 'form'}) do |form| %>
   <% if shift.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(shift.errors.count, "error") %> prohibited this shift from being saved:</h2>

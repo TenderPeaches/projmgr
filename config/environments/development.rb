@@ -19,6 +19,7 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
+  config.assets.compile = true
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

@@ -1,10 +1,36 @@
 
 @import "../config/variables";
+@import "../mixins/media";
+@import "btn";
 
 .form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
   gap: var(--space-xs);
+
+
+  @include media(md) {
+    padding: var(--space-xxxl);
+    border-right: 2px solid $color-primary-dark;
+    border-left: 2px solid $color-primary-dark;
+  }
+
+  input[type=submit] {
+    @extend .btn--primary;
+    margin-top: var(--space-l);
+    cursor: pointer;
+    padding: var(--space-xs);
+  }
+
+  div {
+    input, textarea, select {
+      width: 100%;
+      padding-left: var(--space-xxs);
+    }
+  }
 
   &__group {
     flex: 1;
@@ -27,5 +53,6 @@
     &--invalid {
       border-color: $color-primary;
     }
+
   }
 }
