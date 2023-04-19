@@ -12,11 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :task_id, style: "display: block" %>
-    <%= form.number_field :task_id %>
-  </div>
-
-  <div>
     <%= form.label :minutes, style: "display: block" %>
     <%= form.number_field :minutes %>
   </div>
@@ -24,6 +19,11 @@
   <div>
     <%= form.label :notes, style: "display: block" %>
     <%= form.text_area :notes %>
+  </div>
+
+  <div>
+    <%= form.label :task_id, style: "display: block" %>
+    <%= form.text_field :task_id %>
   </div>
 
   <div>

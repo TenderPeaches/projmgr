@@ -12,11 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :contact_id, style: "display: block" %>
-    <%= form.collection_select :contact_id, Contact.order(:id), :id, :email %>
-  </div>
-
-  <div>
     <%= form.label :company_name, style: "display: block" %>
     <%= form.text_field :company_name %>
   </div>

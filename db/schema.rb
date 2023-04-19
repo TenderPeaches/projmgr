@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_050232) do
   create_table "client_contacts", id: false, force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "contact_id"
-    t.index "\"client\", \"contact\"", name: "index_client_contacts_on_client_and_contact"
+    t.integer "contact_id", null: false
+    t.integer "client_id", null: false
     t.index ["client_id"], name: "index_client_contacts_on_client_id"
     t.index ["contact_id"], name: "index_client_contacts_on_contact_id"
   end
@@ -40,30 +39,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
     t.datetime "end_time"
     t.string "name"
     t.text "notes"
-    t.integer "project_id"
+    t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"project\"", name: "index_events_on_project"
     t.index ["project_id"], name: "index_events_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.boolean "active"
-    t.integer "client_id"
+    t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"client\"", name: "index_projects_on_client"
     t.index ["client_id"], name: "index_projects_on_client_id"
   end
 
   create_table "shifts", force: :cascade do |t|
     t.integer "minutes"
     t.text "notes"
-    t.integer "task_id"
+    t.integer "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"task\"", name: "index_shifts_on_task"
     t.index ["task_id"], name: "index_shifts_on_task_id"
   end
 
@@ -74,13 +70,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "project_id"
+    t.integer "task_category_id", null: false
+    t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.index "\"task_categories\"", name: "index_tasks_on_task_categories"
-    t.index ["category_id"], name: "index_tasks_on_category_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["task_category_id"], name: "index_tasks_on_task_category_id"
   end
 
   add_foreign_key "client_contacts", "clients"
@@ -89,5 +84,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_124119) do
   add_foreign_key "projects", "clients"
   add_foreign_key "shifts", "tasks"
   add_foreign_key "tasks", "projects"
-  add_foreign_key "tasks", "task_categories", column: "category_id"
+  add_foreign_key "tasks", "task_categories"
 end

@@ -15,7 +15,6 @@ class ClientsTest < ApplicationSystemTestCase
     click_on "New client"
 
     fill_in "Company name", with: @client.company_name
-    fill_in "Contact", with: @client.contact_id
     click_on "Create Client"
 
     assert_text "Client was successfully created"
@@ -27,7 +26,6 @@ class ClientsTest < ApplicationSystemTestCase
     click_on "Edit this client", match: :first
 
     fill_in "Company name", with: @client.company_name
-    fill_in "Contact", with: @client.contact_id
     click_on "Update Client"
 
     assert_text "Client was successfully updated"

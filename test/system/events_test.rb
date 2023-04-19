@@ -19,7 +19,6 @@ class EventsTest < ApplicationSystemTestCase
     fill_in "Notes", with: @event.notes
     fill_in "Project", with: @event.project_id
     fill_in "Start time", with: @event.start_time
-    fill_in "Task", with: @event.task_id
     click_on "Create Event"
 
     assert_text "Event was successfully created"
@@ -35,7 +34,6 @@ class EventsTest < ApplicationSystemTestCase
     fill_in "Notes", with: @event.notes
     fill_in "Project", with: @event.project_id
     fill_in "Start time", with: @event.start_time
-    fill_in "Task", with: @event.task_id
     click_on "Update Event"
 
     assert_text "Event was successfully updated"

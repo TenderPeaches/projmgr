@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    belongs_to :project
-    has_one :task_category
-    has_many :shifts
+  belongs_to :task_category
+  belongs_to :project
+  has_many :shifts
 end

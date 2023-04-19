@@ -12,11 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :project_id, style: "display: block" %>
-    <%= form.number_field :project_id %>
-  </div>
-
-  <div>
     <%= form.label :start_time, style: "display: block" %>
     <%= form.datetime_field :start_time %>
   </div>
@@ -37,8 +32,8 @@
   </div>
 
   <div>
-    <%= form.label :task_id, style: "display: block" %>
-    <%= form.number_field :task_id %>
+    <%= form.label :project_id, style: "display: block" %>
+    <%= form.text_field :project_id %>
   </div>
 
   <div>

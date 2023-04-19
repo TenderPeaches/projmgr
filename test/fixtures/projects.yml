@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  client_id: 1
   active: false
+  client: one
 
 two:
   name: MyString
-  client_id: 1
   active: false
+  client: two

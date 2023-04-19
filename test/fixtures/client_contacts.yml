@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  task_category: one
-  project: one
+  contact: one
+  client: one
 
 two:
-  task_category: two
-  project: two
+  contact: two
+  client: two
