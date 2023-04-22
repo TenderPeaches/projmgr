@@ -17,6 +17,21 @@
   }
 }
 
+select {
+  width: 100%;
+  padding: 0.25rem 1rem;
+  background: $color-primary-darkest;
+  color: $color-white;
+  border-color: $color-primary;
+  border-style: solid;
+  
+}
+
+::selection {
+  color: $color-secondary-lightest;
+  background: $color-primary-darkest;
+}
+
 a {
     color: $color-primary-darkest;
     

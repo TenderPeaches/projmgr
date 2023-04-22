@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_19_050232) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_204902) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -55,11 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_050232) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.integer "minutes"
     t.text "notes"
     t.integer "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start"
+    t.datetime "end"
     t.index ["task_id"], name: "index_shifts_on_task_id"
   end
 

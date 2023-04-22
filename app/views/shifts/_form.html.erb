@@ -12,8 +12,12 @@
   <% end %>
 
   <div>
-    <%= form.label :minutes, style: "display: block" %>
-    <%= form.number_field :minutes %>
+    <%= form.label :start, style: "display: block" %>
+    <%= form.datetime_local_field :start %>
+  </div>
+  <div>
+    <%= form.label :end, style: "display: block" %>
+    <%= form.datetime_local_field :end %>
   </div>
 
   <div>
@@ -23,7 +27,7 @@
 
   <div>
     <%= form.label :task_id, style: "display: block" %>
-    <%= form.text_field :task_id %>
+    <%= form.collection_select :task_id, Task.order(:id), :id, :project_id %>
   </div>
 
   <div>

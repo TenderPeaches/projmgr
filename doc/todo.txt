@@ -1,8 +1,11 @@
 x> Adjust CSS
 x> Design Homepage
 x> Create model associations
-*> Ensure assocations integrity
+x> Ensure assocations integrity
+*> Adjust form inputs
 *> Create test data
 *> Setup Homepage
 *> Adjust list display into tables
+*> Tweak forms
+    *> Checkboxes centered
 *> Show graphs & data interpolations

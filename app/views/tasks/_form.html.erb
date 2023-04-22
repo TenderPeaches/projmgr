@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :task_category_id, style: "display: block" %>
-    <%= form.text_field :task_category_id %>
+    <%= form.collection_select :task_category_id, TaskCategory.order(:name), :id, :name %>
   </div>
 
   <div>

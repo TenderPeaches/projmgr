@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.all         # list of all projects
+    @project = Project.first        # selected project
   end
 
   # GET /projects/1 or /projects/1.json

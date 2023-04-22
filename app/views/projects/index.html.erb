@@ -3,12 +3,11 @@
 <h1>Projects</h1>
 
 <div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
+  <select name="project_id">
+    <% @projects.each do |project| %>
+      <%= tag.option label: project.label, value: project.id %>
+    <% end %>
+  </select>
 </div>
 
-<%= link_to "New project", new_project_path %>
+<%= link_to "New project", new_project_path, { class: "btn btn--primary"} %>
