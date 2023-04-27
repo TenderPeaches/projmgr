@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_19_204902) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_235848) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_204902) do
     t.datetime "updated_at", null: false
     t.datetime "start"
     t.datetime "end"
+    t.integer "duration"
     t.index ["task_id"], name: "index_shifts_on_task_id"
   end
 

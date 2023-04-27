@@ -24,7 +24,7 @@ body {
   min-height: 100%;
 
   background-color: $color-background;
-  color: var(--color-text-body);
+  color: $color-text;
   line-height: var(--lh-body);
   font-family: $font-family;
 }

@@ -1,17 +1,12 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Name:</strong>
-    <%= project.name %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= project.active %>
-  </p>
-
-  <p>
-    <strong>Client:</strong>
-    <%= project.client_id %>
-  </p>
-
+<div id="<%= dom_id project %>" class="object">
+  <div class="object__header">
+    <h2><%= project.name %></h2>
+    <% unless project.active %>
+      <h4 class="label label--inactive">Inactive</h4>
+    <% end %>
+    <span>Client: <%= link_to project.client.company_name, project.client %></span>
+  </div>
+  <div class="objec__module">
+    <%= render "shifts", project: project %>
+  </div>
 </div>

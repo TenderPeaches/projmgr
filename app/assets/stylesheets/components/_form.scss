@@ -56,3 +56,38 @@
 
   }
 }
+
+/* for now here bc list.scss doesn't work with $variables? */
+.list {
+
+  border-spacing: 0;
+  width: 100%;
+
+  td, th {
+    border: 1px solid $color-border;
+    padding: var(--space-m);
+  }
+
+  th {
+    background-color: $color-primary-darkest;
+    color: $color-white;
+    border-color: $color-primary-dark;
+  }
+
+  td {
+    * {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+/* label.scss */
+.label {
+  font-style: italic;
+}
+
+/* object.scss */ 
+.object__header {
+  margin-bottom: var(--space-l);
+}

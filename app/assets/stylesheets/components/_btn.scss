@@ -27,7 +27,7 @@
   /* btn--primary, default button */
   &--primary {
     color: $color-white;
-    background: linear-gradient($color-primary-dark 75%, $color-primary-alt-dark);
+    background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
 
     a {
       color: $color-white;
@@ -50,7 +50,7 @@
   /* btn--secondary, call-to-action */
   &--secondary {
     color: $color-white;
-    background-image: linear-gradient(to right, $color-secondary), $color-secondary-alt;
+    background: linear-gradient($color-secondary-dark 75%, $color-secondary-alt-dark), $color-secondary-alt;
 
     &:hover,
     &:focus,
@@ -70,8 +70,7 @@
     &:focus,
     &:focus-within,
     &:active {
-      color: $color-dark;
-      filter: brightness(92%);
+      $background: $color-primary-lightest;
     }
   }
 

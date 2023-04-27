@@ -31,6 +31,9 @@
   </div>
 
   <div>
+    <%= form.label :duration, style: "display: block" %>
+    <%= form.number_field :duration, { :readonly => true} %>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

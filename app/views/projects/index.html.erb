@@ -3,11 +3,24 @@
 <h1>Projects</h1>
 
 <div id="projects">
-  <select name="project_id">
-    <% @projects.each do |project| %>
-      <%= tag.option label: project.label, value: project.id %>
-    <% end %>
-  </select>
+  <table class="list list--projects">
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th>...</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.label, project, { class: "btn btn--light" } %></td>
+          <td class="actions"><%= link_to "Edit", edit_project_path(project), { class: "btn btn--primary" } %>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
 </div>
 
 <%= link_to "New project", new_project_path, { class: "btn btn--primary"} %>

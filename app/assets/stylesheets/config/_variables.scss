@@ -41,6 +41,9 @@ $color-black: #000;
 $color-dark: hsl(0, 1%, 16%); 
 $color-light: hsl(0, 6%, 93%);
 
+$color-text: $color-primary-darker;
+$color-border: $color-primary-darkest;
+
 $font-family: 'Cascadia Code', 'Consolas';
 
 :root {

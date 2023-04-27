@@ -1,0 +1,19 @@
+<div class="project__shifts">
+    <table class="list">
+        <thead>
+            <tr>
+                <th><%= project.name %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% project.tasks.each do |task| %>
+                <tr>
+                    <td><%= task.task_category.name %></td>
+                    <td><%= %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</div>
