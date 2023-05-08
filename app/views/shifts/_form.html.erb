@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <!--div>
+    <%= form.label :project_id %>
+    <%= form.collection_select @shift.project_id, Project.order(:id), :id, :name %>
+  </div>
+  <div>
+    <%= form.label :task_category_id %>
+    <%= form.collection_select @shift.project_id, TaskCategory.order(:id), :id, :name %>
+  </div-->
   <div>
     <%= form.label :start, style: "display: block" %>
     <%= form.datetime_local_field :start %>
@@ -25,14 +33,15 @@
     <%= form.text_area :notes %>
   </div>
 
-  <div>
+  <!--div>
     <%= form.label :task_id, style: "display: block" %>
     <%= form.collection_select :task_id, Task.order(:id), :id, :project_id %>
-  </div>
+  </div-->
 
   <div>
     <%= form.label :duration, style: "display: block" %>
-    <%= form.number_field :duration, { :readonly => true} %>
+    <%= @shift.duration %>
+  </div>
   <div>
     <%= form.submit %>
   </div>
