@@ -3,12 +3,32 @@
 <h1>Shifts</h1>
 
 <div id="shifts">
-  <% @shifts.each do |shift| %>
-    <%= render shift %>
-    <p>
-      <%= link_to "Show this shift", shift %>
-    </p>
-  <% end %>
+  <table class="list list--shifts">
+    <thead>
+      <tr>
+        <th>Shift</th>
+        <th>Task</th>
+        <th>Project Name</th>
+        <th>Created DT</th>
+        <th>Minutes Worked</th>
+        <th>...</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shifts.each do |shift| %>
+        <tr>
+          <td><%= link_to shift.id, shift, { class: "btn btn--light" } %></td>
+          <td><%= shift.task.task_category.name %></td>
+          <td><%= shift.task.project.name %></td>
+          <td><%= shift.created_at %></td>
+          <td><%= shift.duration %></td>
+          <td class="actions"><%= link_to "Edit", edit_shift_path(shift), { class: "btn btn--primary" } %>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
 </div>
 
-<%= link_to "New shift", new_shift_path %>
+<%= link_to "Add shift", timekeeping_path, { class: "btn btn--primary" } %>

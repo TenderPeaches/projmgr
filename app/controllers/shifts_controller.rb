@@ -22,6 +22,7 @@ class ShiftsController < ApplicationController
   # POST /shifts or /shifts.json
   def create
     @shift = Shift.new(shift_params)
+    print @shift
 
     respond_to do |format|
       if @shift.save
@@ -65,6 +66,6 @@ class ShiftsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shift_params
-      params.require(:shift).permit(:minutes, :notes, :task_id)
+      params.require(:shift).permit(:duration, :notes, :task_category_id, :project_id, :start, :end, :task_id)     # need to update these!! check with model too
     end
 end
