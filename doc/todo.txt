@@ -2,10 +2,14 @@ x> Adjust CSS
 x> Design Homepage
 x> Create model associations
 x> Ensure assocations integrity
-*> Adjust form inputs
-*> Create test data
-*> Setup Homepage
-*> Adjust list display into tables
+x> Adjust form inputs
+x> Create test data
+x> Setup Homepage
+x> Adjust list display into tables
+*> Fix seeds (Shifts don't add)
 *> Tweak forms
     *> Checkboxes centered
+*> "Create Client/Contact" Form
+*> "Create tasks" action (just create 1 action of each type for a given project)
+*> Add expenses
 *> Show graphs & data interpolations

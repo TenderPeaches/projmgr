@@ -9,13 +9,17 @@
 # contacts
 contact__self = Contact.create(first_name: "Ysaac", last_name: "Quevillon", phone: "5142200686", email: "ocellenfadat@proton.me")
 contact__ph = Contact.create(first_name: "PH", last_name: "Quevillon", phone: "", email: "phquevillon@gmail.com")
+contact__guylaine = Contact.create(first_name: "Guylaine", last_name: "Germain", phone: "514337741", email: "guylainegermain-tra@gmail.com")
 # clients
 client__custard = Client.create(company_name: "Custard CS")
+client__guylaine = Client.create(company_name: "Guylaine Germain")
 # client-contacts
 ClientContact.create(client: client__custard, contact: contact__ph)
+ClientContact.create(client: client__guylaine, contact: contact__guylaine)
 
 # projects 
 project__custard_wp = Project.create(name: "Custard Wordpress", active: true, client: client__custard)
+project__tra_gg = Project.create(name: "TRA - GG", active: true, client: client__guylaine)
 
 # task categories
 task_category__setup = TaskCategory.create(name: "Setup")
@@ -30,7 +34,7 @@ task__custardwp_import = Task.create(task_category: task_category__import, proje
 task__custardwp_dev = Task.create(task_category: task_category__dev, project: project__custard_wp)
 
 # shifts
-Shift.create(start: DateTime.parse('2023-02-15 16:55 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-02-15 17:35 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_coordination, notes: 'Meeting w/ Parinita to discuss client needs')
+a_shift = Shift.create(start: DateTime.parse('2023-02-15 16:55 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-02-15 17:35 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_coordination, notes: 'Meeting w/ Parinita to discuss client needs')
 Shift.create(start: DateTime.parse('2023-03-11 19:10 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-03-11 19:50 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Assess WordPress demo build')
 Shift.create(start: DateTime.parse('2023-03-17 16:55 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-03-17 17:35 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Assess WordPress demo build, meet w/ Parinita')
 Shift.create(start: DateTime.parse('2023-03-28 10:00 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-03-28 10:05 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Install Wordpress on server')
@@ -57,4 +61,3 @@ Shift.create(start: DateTime.parse('2023-04-14 15:00 -5', '%Y-%m-%d %I:%M %z'), 
 Shift.create(start: DateTime.parse('2023-04-20 19:05 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-04-20 19:20 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_dev, notes: 'Create user for Parinita, remove Jobs CTA (Employers)')
 Shift.create(start: DateTime.parse('2023-04-21 11:35 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-04-21 12:05 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_dev, notes: 'Apply feedback: Responsive testimonials plug-in')
 Shift.create(start: DateTime.parse('2023-04-21 12:41 -5', '%Y-%m-%d %I:%M %z'), end: DateTime.parse('2023-04-21 12:58 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_dev, notes: 'Apply feedback: Jobseekers footer margin, hide privacy policy')
-
