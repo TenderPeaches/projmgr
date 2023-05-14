@@ -12,18 +12,19 @@
   <% end %>
 
   <div>
+    <%= form.label :client_id, style: "display: block" %>
+    <%= form.collection_select :client_id, Client.order(:id), :id, :company_name %>
+    <%= link_to "Add client", new_client_path, { class: "btn btn--dark", style: "width: 100%; margin-top: 10px;"} %> <%# bad! change to stylesheets instead %>
+  </div>
+
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :active, style: "display: block" %>
+    <%= form.label :active %>
     <%= form.check_box :active %>
-  </div>
-
-  <div>
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.collection_select :client_id, Client.order(:id), :id, :company_name %>
   </div>
 
   <div>

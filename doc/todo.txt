@@ -6,10 +6,10 @@ x> Adjust form inputs
 x> Create test data
 x> Setup Homepage
 x> Adjust list display into tables
-*> Fix seeds (Shifts don't add)
-*> Tweak forms
-    *> Checkboxes centered
-*> "Create Client/Contact" Form
+x> Fix seeds (Shifts don't add)
+x> Tweak forms
+    x> Checkboxes centered
+x> "Create Client" Form
 *> "Create tasks" action (just create 1 action of each type for a given project)
 *> Add expenses
 *> Show graphs & data interpolations
