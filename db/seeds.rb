@@ -11,13 +11,15 @@ contact__self = Contact.create(first_name: "Ysaac", last_name: "Quevillon", phon
 contact__ph = Contact.create(first_name: "PH", last_name: "Quevillon", phone: "", email: "phquevillon@gmail.com")
 contact__guylaine = Contact.create(first_name: "Guylaine", last_name: "Germain", phone: "514337741", email: "guylainegermain-tra@gmail.com")
 # clients
+client__self = Client.create(company_name: "OcellEnfadat")
 client__custard = Client.create(company_name: "Custard CS")
 client__guylaine = Client.create(company_name: "Guylaine Germain")
 # client-contacts
+ClientContent.create(client: client__self, contact: contact__self)
 ClientContact.create(client: client__custard, contact: contact__ph)
 ClientContact.create(client: client__guylaine, contact: contact__guylaine)
 
-# projects 
+# projects
 project__custard_wp = Project.create(name: "Custard Wordpress", active: true, client: client__custard)
 project__tra_gg = Project.create(name: "TRA - GG", active: true, client: client__guylaine)
 

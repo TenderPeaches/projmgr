@@ -8,7 +8,15 @@ class Project < ApplicationRecord
     "#%{id} - %{name}" % { id: id, name: name }
   end
 
-  def tasks_hours_sum
-    
-  end
+  after_save :generate_tasks
+
+  private
+    def generate_tasks(project)
+      task_categories = TaskCategory.all
+      task_categories.each do |task_category|q
+        new_task = Task.create(task_category: task_category, project: project)
+      end
+    end
+
+
 end
