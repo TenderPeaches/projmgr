@@ -18,39 +18,52 @@
                         
 # first draft
 
-# statements are doucments that are emitted for a given client
+# statements are documents that are emitted for a given client
 # they would consist of estimates, invoices and receipts
 class Statement < ApplicationRecord
-    has_many :recipients            # who the statement is sent to
-    
-    has_one :transaction_item_list, as: :items
+    has_many :recipients, class_name: "Contact" # who the statement is sent to
+    has_one :order, through: :order_statements
 
     attr_accessor :sent_date        # date of emission
 end
 
-# "services" would be technically OK but using Product for clarity - what is being sold
+# "services" would be technically OK but using Product for clarity - what is being sold (a billable item)
 class Product < ApplicationRecord
-    has_many :transaction_items     
+    has_many :order_items     
 
-    attr_accessor :name, :cost      # cost == hourly_rate
+    attr_accessor :name, :cost, :description # cost == hourly_rate
 end
 
-# transaction item corresponds to an invoice line: some quantity of products with a given total cost
-class TransactionItem < ApplicationRecord
+# order item corresponds to an invoice line: some quantity of products with a given total cost
+class OrderItem < ApplicationRecord
     belongs_to :product
-    belongs_to :transaction_item_list
+    belongs_to :order
+
+    attr_accessor :quantity, :subtotal
 end
 
-# list of items that might belong to a transaction
-class TransactionItemList < ApplicationRecord
-    belongs_to :items, polymorphic: true
-    has_many :products, through: :transaction_items
+# order statement ties an order to a statement, this allows for: multiple estimates to be generated for a given order
+    # also allows for breaking down of an order in multiple invoices, or multiple payments
+class OrderStatement < ApplicationRecord
+    belongs_to :order
+    belongs_to :statement
 end
 
-class Transaction < AppilcationRecord
+# list of products that comprise an "order", a list of "products/services" that should comprise a single estimate/invoice/receipt
+class Order < ApplicationRecord
+    belongs_to :client              # points to the client
+
+    has_many :products, through: :order_items
+    has_many :statements, through: :order_statements
+end
+
+# a transaction happens only when money changes hands
+    # it could logically point to an invoice, but won't be done now since not really necessary - clients pay off their total balance, regardless of specific invoices
+class Transaction < ApplicationRecord
     has_one :client
 end
 
+# payment methods 
 class PaymentMethod < ApplicationRecord
     has_many :payments
     attr_accessor :name, :notes
@@ -59,10 +72,11 @@ end
 # client pay self/service provider
 class Payment < Transaction
     belongs_to :payment_method
-    belongs_to :invoice
-    has_one :receipt
+    belongs_to :client              # point towards the client, not a specific invoice - clients are paying off their total balance
+    has_one :receipt                # do need a specific receipt for a given payment tho
 end
 
+# receipt is emitted when payment is made
 class Receipt < Statement
     belongs_to :payment
 end
@@ -72,10 +86,23 @@ class Credit < Transaction
     belongs_to :invoice, optional: true
 end
 
+# estimate is emitted before any payment is agreed upon
 class Estimate < Statement
+    has_one :order
 end
 
+# invoice is emitted when payment and orders are agreed for
 class Invoice < Statement
+    has_one :order
+end
+
+class ExpenseType < ApplicationRecord
+    attr_accessor :name, :description, :tax_code
+end
+class Expense < ApplicationRecord
+    belongs_to :expense_type
+
+    attr_accessor :amount, :date_incurred, :proof
 end
 
 class AddAccountingTables < ActiveRecord::Migration[7.0]
