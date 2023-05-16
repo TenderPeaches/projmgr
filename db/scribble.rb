@@ -88,12 +88,10 @@ end
 
 # estimate is emitted before any payment is agreed upon
 class Estimate < Statement
-    has_one :order
 end
 
 # invoice is emitted when payment and orders are agreed for
 class Invoice < Statement
-    has_one :order
 end
 
 class ExpenseType < ApplicationRecord
