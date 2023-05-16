@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @estimate %>
+
+<div>
+  <%= link_to "Edit this estimate", edit_estimate_path(@estimate) %> |
+  <%= link_to "Back to estimates", estimates_path %>
+
+  <%= button_to "Destroy this estimate", @estimate, method: :delete %>
+</div>

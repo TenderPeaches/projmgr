@@ -97,7 +97,7 @@ class Invoice < Statement
 end
 
 class ExpenseType < ApplicationRecord
-    attr_accessor :name, :description, :tax_code
+    attr_accessor :name, :description
 end
 class Expense < ApplicationRecord
     belongs_to :expense_type

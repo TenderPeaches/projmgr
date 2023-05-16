@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Estimates</h1>
+
+<div id="estimates">
+  <% @estimates.each do |estimate| %>
+    <%= render estimate %>
+    <p>
+      <%= link_to "Show this estimate", estimate %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New estimate", new_estimate_path %>
