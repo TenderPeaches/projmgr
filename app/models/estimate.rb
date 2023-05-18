@@ -1,3 +1,2 @@
-class Estimate < ApplicationRecord
-  belongs_to :statement
+class Estimate < Statement
 end

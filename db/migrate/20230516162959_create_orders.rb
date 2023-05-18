@@ -20,7 +20,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.bigint :product_id
 
       t.decimal :subtotal
-      t.int :quantity
+      t.integer :quantity
     end
 
     add_index :order_items, :order_id

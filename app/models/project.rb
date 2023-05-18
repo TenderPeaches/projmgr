@@ -4,11 +4,11 @@ class Project < ApplicationRecord
   has_many :shifts, through: :tasks
   has_many :events
 
+  after_save :generate_tasks
+
   def label 
     "#%{id} - %{name}" % { id: id, name: name }
   end
-
-  after_save :generate_tasks
 
   private
     def generate_tasks(project)

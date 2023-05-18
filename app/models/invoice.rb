@@ -1,5 +1,4 @@
-class Invoice < ApplicationRecord
-  belongs_to :statement
+class Invoice < Statement
 
   validates :due_date, presence: true
 end
