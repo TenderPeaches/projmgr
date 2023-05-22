@@ -1,0 +1,6 @@
+Create estimate/invoice/payment:
+    * Add shifts to an "order" (list of billable goods) (has to be shifts, because say if we invoice monthly we might bill a given task on more than one bills/orders)
+    * Prompt new statement
+    * Link statement with order
+    * Create statement
+

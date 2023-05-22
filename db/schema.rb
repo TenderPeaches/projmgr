@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_163424) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -85,10 +85,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_163424) do
   end
 
   create_table "order_items", id: false, force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "product_id"
+    t.integer "order_id"
+    t.integer "product_id"
     t.decimal "subtotal"
-    t.integer "quantity"
+    t.decimal "quantity"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -120,6 +120,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_163424) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "notes"
+    t.integer "payment_method_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_payments_on_client_id"
+    t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -154,6 +164,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_163424) do
     t.datetime "start"
     t.datetime "end"
     t.integer "duration"
+    t.integer "order_item_id"
+    t.index ["order_item_id"], name: "index_shifts_on_order_item_id"
     t.index ["task_id"], name: "index_shifts_on_task_id"
   end
 
@@ -194,6 +206,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_163424) do
   add_foreign_key "expenses", "expense_types"
   add_foreign_key "invoices", "statements"
   add_foreign_key "orders", "clients"
+  add_foreign_key "payments", "clients"
+  add_foreign_key "payments", "payment_methods"
   add_foreign_key "projects", "clients"
   add_foreign_key "receipts", "payments"
   add_foreign_key "shifts", "tasks"

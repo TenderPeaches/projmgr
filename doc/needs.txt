@@ -50,3 +50,37 @@ features:
     * Track hours, summarize data in charts
     * Track bills/invoices/estimates 
 
+
+
+should Shift belong to an Order? or Order_Product? how to compile shifts into payable invoice lines?
+
+Shift 1
+    30 min
+    Task: Project_Setup
+    Product: "Web Setup"? (flat fee?)
+
+Shift 2
+    3 hrs
+    Task: Project_Dev
+    Product: "Web Developper 1hr"
+    Quantity: 3
+
+I want to be able:
+    To bill a flat website setup, for instance:
+        Have a bunch of shifts at a $ cost
+        Have a product that's "Website Setup" or wtv that's a flat fee, with the order
+            So in the invoice:
+                Website Setup -  300$
+                Web Dev Hours (Included) x 10 - 0$ 
+    To bill a number of billable hours grouped into shifts
+
+    Solution:
+        Shift belongs_to Order_Product
+        Order_Product can point towards "Web Dev Hours (Included)" for 0$ hours, or Web Dev Hours for $$ hours
+        Order_Product.quantity => Either set to nil if shifts are linked (ish), or computed according to shifts
+            => Compute quantity from shifts is preferred option
+    Flow: 
+        Specify shift product
+        Add shift to order
+        Create order_item if doesn't exist
+        Update order quantity
