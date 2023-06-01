@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -84,11 +84,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
     t.index ["statement_id"], name: "index_invoices_on_statement_id"
   end
 
-  create_table "order_items", id: false, force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.decimal "subtotal"
+  create_table "order_items", force: :cascade do |t|
     t.decimal "quantity"
+    t.decimal "subtotal"
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -161,8 +163,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
     t.integer "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_dt"
+    t.datetime "end_dt"
     t.integer "duration"
     t.integer "order_item_id"
     t.index ["order_item_id"], name: "index_shifts_on_order_item_id"
@@ -180,6 +182,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "default"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -205,6 +208,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_132028) do
   add_foreign_key "events", "projects"
   add_foreign_key "expenses", "expense_types"
   add_foreign_key "invoices", "statements"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
   add_foreign_key "orders", "clients"
   add_foreign_key "payments", "clients"
   add_foreign_key "payments", "payment_methods"

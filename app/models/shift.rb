@@ -1,6 +1,6 @@
 class Shift < ApplicationRecord
-  belongs_to :task      # shift accomplishes part of a task
-  belongs_to :order     # shift is being accounted for as part of a payable order
+  belongs_to :task          # shift accomplishes part of a task
+  belongs_to :order_item    # shift is being accounted for as part of a payable order
 
   attr_accessor :project_id, :task_category_id          # used to infer task_id
 
@@ -10,8 +10,26 @@ class Shift < ApplicationRecord
     end
   end
 
-  before_update do
-    self.duration = (self.end - self.start) / 60        # assume duration as end_time - start_time, in minutes
+  after_create do
+    if duration.nil?
+      set_duration
+    end
+  end
+
+  def self.update_duration      # update duration for all shifts when necessary
+    Shift.all.each do |shift|
+      if shift.duration.nil?    # ignore if duration is already set
+        shift.update(duration: shift.get_duration) # deduce duration from starting and ending timestamps
+      end
+    end
+  end
+
+  def set_duration
+    self.update(duration: self.get_duration)
+  end
+
+  def get_duration
+    (end_dt - start_dt) / 60        # assume duration as end_time - start_time, in minutes
   end
 
   # returns list of uninvoiced shifts - shifts that have not been tied to an invoice

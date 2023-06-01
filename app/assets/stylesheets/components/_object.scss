@@ -1,0 +1,13 @@
+@import "../config/variables";
+
+/* Object is a custom component arrangement meant to enforce a given UI presentation standard */
+.object__action-menu {
+    display: flex;
+    padding: var(---space-xxxs);
+    border: var(--border-thick-dark);
+}
+
+.object__action-menu * {
+    flex: 1 1 0px;
+    margin: 0 var(--space-xxxs);
+}

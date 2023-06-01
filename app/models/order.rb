@@ -5,13 +5,13 @@ class Order < ApplicationRecord
   has_many :products, through: :order_items
   has_many :order_statements
   has_many :statements, through: :order_statements
-  has_many :shifts
 end
 
 # order item corresponds to an invoice line: some quantity of products with a given total cost
 class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
+  has_many :shifts
 
   attr_accessor :quantity, :subtotal
 end

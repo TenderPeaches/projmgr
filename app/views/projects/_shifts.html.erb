@@ -3,12 +3,17 @@
         <thead>
             <tr>
                 <th><%= project.name %></th>
+                <th>Hours worked</th>
+                <th>Hours invoiced</th>
+                <th>Hours paid</th>
             </tr>
         </thead>
         <tbody>
             <% project.tasks.each do |task| %>
                 <tr>
                     <td><%= task.task_category.name %></td>
+                    <td><%= %></td>
+                    <td><%= %></td>
                     <td><%= %></td>
                 </tr>
             <% end %>

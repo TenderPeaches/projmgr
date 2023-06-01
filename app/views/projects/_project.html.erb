@@ -6,7 +6,18 @@
     <% end %>
     <span>Client: <%= link_to project.client.company_name, project.client %></span>
   </div>
-  <div class="objec__module">
-    <%= render "shifts", project: project %>
+  <div class="object__module">
+    <div class="object__action-menu">
+      <%= link_to "Timekeeping", timekeeping_path, { class: "btn btn--primary"} %>
+      <%= link_to "Edit", edit_project_path(project), { class: "btn btn--primary"} %>
+    </div>
+    <div class="object__data">
+      <div class="object__data-label">Hrs worked</div>
+      <div class="object__data-value"><%= project.hours_worked %></div>
+    </div>
+    <% # manage statements (-> statement view) %>
+    <% # link_to "Invoicing", statements_path %>
+    <% # current order (order.order_items) %>
+    <% # render "shifts", project: project %>
   </div>
 </div>
