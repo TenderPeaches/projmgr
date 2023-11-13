@@ -1,7 +1,90 @@
-<div id="<%= dom_id order %>">
-  <p>
-    <strong>Client:</strong>
-    <%= order.client_id %>
-  </p>
+<div class="order" id="<%= dom_id order %>">
 
+  <%= content_tag :table do %>
+    <%= content_tag :thead do %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, { colspan: 4, class: "borderless" } do %>
+          <%= content_tag :h3 do %>
+            Custard - Site WordPress
+          <% end %>
+        <% end %> 
+        <%= content_tag :td, class: "borderless" do %>
+          <%= content_tag :h3, style: "text-align: right;" do %>
+            Facture - 2023/11/13
+          <% end %>
+        <% end %> 
+      <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, { colspan: 5, class: "borderless", style: "text-align: right;" } do %>
+          <%= content_tag :h3 do %>
+            Montant dû (CAD): <%= content_tag :span, class: "highlight" do %><%= number_with_precision(@total_rate, precision: 2) %>$<% end %>
+          <% end %>
+        <% end %> 
+      <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :th do %>
+          Date
+        <% end %>
+        <%= content_tag :th do %>
+          De
+        <% end %>
+        <%= content_tag :th do %>
+          À
+        <% end %>
+        <%= content_tag :th do %>
+          Minutes (h)
+        <% end %>
+        <%= content_tag :th do %>
+          Description
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= content_tag :tbody do %>
+      <% @shifts.each do |shift| %>
+        <%= content_tag :tr do %>
+          <%= content_tag :td do %>
+            <%= shift.start_dt.strftime("%D") %> 
+          <% end %>
+          <%= content_tag :td do %>
+            <%= shift.start_dt.strftime("%Hh%M") %>
+          <% end %>
+          <%= content_tag :td do %>
+            <%= shift.end_dt.strftime("%Hh%M") %>
+          <% end %>
+          <%= content_tag :td do %>
+            <%= "#{shift.duration} (#{(shift.duration / 60.0).round(2)})" %>
+          <% end %> 
+          <%= content_tag :td do %>
+            <%= shift.notes %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :tr do %>        
+        <%= content_tag :th, { colspan: 4 } do %>
+          <%= "Heures travaillées" %>
+        <% end %>
+        <%= content_tag :td do %>
+          <%= @total_hours_worked %>
+        <% end %>
+      <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :th, { colspan: 4 } do %>
+          <%= "Taux Horaire $CAD" %>
+        <% end %>
+        <%= content_tag :td do %>
+          <%= number_with_precision(@hourly_rate, precision: 2) %>
+        <% end %>
+      <% end %>
+      <%= content_tag :tr do %>      
+        <%= content_tag :th, { colspan: 4 } do %>
+          <%= "Prix Total $CAD" %>
+        <% end %>
+        <%= content_tag :td do %>
+          <%= number_with_precision(@total_rate, precision: 2) %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= content_tag :tfoot do %>
+    <% end %>
+  <% end %>
 </div>

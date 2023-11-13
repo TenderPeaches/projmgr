@@ -1,0 +1,6 @@
+<% 
+data_params = [] 
+local_assigns[:locals][:project].hour_breakdown_by_task.each do |task|
+    data_params.push({ label: task[1][:name], value: number_with_precision(task[1][:minutes] / 60, precision: 2)}) # data is in 1 unless there is a way to not have hashes' index show up somehow in project.hour_breakdown_by_task
+end %>
+<%= render "data-panel", locals: { data: data_params } %>

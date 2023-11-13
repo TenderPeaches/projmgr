@@ -1,0 +1,39 @@
+.order {
+    table, table td {
+        border-collapse: collapse;
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+    }
+
+    table td {
+        padding: 0.5em;
+    }
+
+    table th {
+        background: black;
+        color: white;
+    }
+
+    table thead th {
+        text-align: center; 
+        padding: 0.75em;
+    }
+
+    table tbody th {
+        text-align: right;
+        padding-right: 1em;
+    }
+
+    table .borderless {
+        border-style: none;
+    }
+
+    table .borderless * {
+        margin: 0.1em;
+    }
+
+    .highlight {
+        background: yellow;
+    }
+}

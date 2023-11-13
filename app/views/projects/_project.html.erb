@@ -11,9 +11,15 @@
       <%= link_to "Timekeeping", timekeeping_path, { class: "btn btn--primary"} %>
       <%= link_to "Edit", edit_project_path(project), { class: "btn btn--primary"} %>
     </div>
-    <div class="object__data">
-      <div class="object__data-label">Hrs worked</div>
-      <div class="object__data-value"><%= project.hours_worked %></div>
+    <div class="object__panel">
+      <%= render "data_panel", locals: { data: [
+        { label: "Hrs worked", value: project.hours_worked },
+        { label: "Hrs billed", value: project.hours_billed },
+        { label: "Pending pay", value: number_to_currency(project.pending_pay, precision: 2) },
+        { label: "Total pay", value: number_to_currency(project.total_pay, precision: 2) }, ] } %>
+    </div>
+    <div class="object__panel">
+      <%= render "task_hours", locals: { project: project } %>      
     </div>
     <% # manage statements (-> statement view) %>
     <% # link_to "Invoicing", statements_path %>

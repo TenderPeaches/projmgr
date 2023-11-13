@@ -1,0 +1,7 @@
+<table class="object__data-panel">
+    <tbody>
+        <% local_assigns[:locals][:data].each do |row| %>
+            <tr class="object__data"><%= render "data_object", locals: { data: row } %></tr>
+        <% end %>
+    </tbody>
+</table>

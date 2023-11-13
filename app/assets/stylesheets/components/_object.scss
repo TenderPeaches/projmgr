@@ -11,3 +11,40 @@
     flex: 1 1 0px;
     margin: 0 var(--space-xxxs);
 }
+
+.object__data {
+    display: flex;
+}
+
+.object__panel {
+    margin: var(--space-m);
+}
+
+.object__data-panel {
+    width: 100%;
+    border: solid 2px $color_primary_darker;
+}
+
+.object__data-panel td,
+.object__data-panel th {
+    padding: var(--space-xs);
+    border: solid 1px $color_primary_dark;
+}
+
+.object__data-label,
+.object__data-value {
+    flex: 1 0 1px;
+}
+
+.object__data-label {
+    font-weight: 800;
+}
+
+.object__data-value {
+    text-align: right;
+}
+
+.object__panel {
+    padding: var(---space-xs);
+    border: var(--border-thick-dark);
+}

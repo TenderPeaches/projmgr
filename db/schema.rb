@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.decimal "amount"
+    t.float "amount"
     t.date "date_incurred"
     t.integer "expense_type_id", null: false
     t.datetime "created_at", null: false
@@ -85,8 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.decimal "quantity"
-    t.decimal "subtotal"
+    t.float "quantity"
+    t.float "subtotal"
     t.integer "product_id", null: false
     t.integer "order_id", null: false
     t.datetime "created_at", null: false
@@ -97,11 +97,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "client_id", null: false
-    t.decimal "subtotal"
-    t.decimal "gst"
-    t.decimal "pst"
-    t.decimal "discount"
-    t.decimal "total"
+    t.float "subtotal"
+    t.float "gst"
+    t.float "pst"
+    t.float "discount"
+    t.float "total"
     t.string "notes"
     t.datetime "deadline"
     t.datetime "created_at", null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.decimal "cost"
+    t.float "cost"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -196,7 +196,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "type"
-    t.decimal "amount"
+    t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

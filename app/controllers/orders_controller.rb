@@ -8,6 +8,16 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+
+    @shifts = Shift.where(order_item_id: params[:id]) 
+    @total_hours_worked = @shifts.sum(:duration).to_f / 60.0
+    @product = Product.regular_dev
+    @hourly_rate = @product.cost
+    @total_rate = (@total_hours_worked * @hourly_rate).round(2).to_i
+
+    render layout: 'print'
+
+    # render pdf: "order_#{params[:id]}"
   end
 
   # GET /orders/new
