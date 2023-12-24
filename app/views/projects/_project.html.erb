@@ -19,7 +19,7 @@
         { label: "Total pay", value: number_to_currency(project.total_pay, precision: 2) }, ] } %>
     </div>
     <div class="object__panel">
-      <%= render "task_hours", locals: { project: project } %>      
+      <%= render partial: "task_hours", locals: { project: project } %>      
     </div>
     <% # manage statements (-> statement view) %>
     <% # link_to "Invoicing", statements_path %>
