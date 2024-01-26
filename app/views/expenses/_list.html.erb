@@ -1,0 +1,19 @@
+<%= tag.table class: "list list--expenses", id: "expenses" do  %>
+  <%= tag.thead do %>
+    <%= tag.tr do %>
+      <%= tag.th t('models.expenses.label') %>
+      <%= tag.th t('models.expenses.expense_type') %>
+      <%= tag.th t('models.expenses.amount') %>
+      <%= tag.th t('models.expenses.date_incurred') %>
+      <%= tag.th %>
+    <% end %>
+  <% end %>
+  <%= tag.tbody do %>
+    <% expenses.each do |expense| %>
+        <%= tag.td expense.label %>
+        <%= tag.td expense.expense_type.label %>
+        <%= tag.td monetize(expense.amount) %>
+        <%= tag.td date_format(expense.date_incurred) %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -68,11 +68,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_155618) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.float "amount"
+    t.decimal "amount"
     t.date "date_incurred"
     t.integer "expense_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "label"
     t.index ["expense_type_id"], name: "index_expenses_on_expense_type_id"
   end
 
