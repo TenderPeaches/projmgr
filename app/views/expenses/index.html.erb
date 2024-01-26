@@ -3,5 +3,6 @@
 <h1>Expenses</h1>
 
 <%= render partial: "expenses/list", locals: { expenses: @expenses } %>
+<%= tag.div id: "new-expenses" %>
 
-<%= link_to "New expense", new_expense_path %>
+<%= link_to t('actions.new', thing: t('models.expense.model_name')), new_expense_path, class: "button", data: { turbo_stream: true } %>

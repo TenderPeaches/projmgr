@@ -1,0 +1,19 @@
+<%= tag.div class: "field" do %>
+    <%= form.label :label %>
+    <%= form.text_field :label %>
+<% end %>
+
+<%= tag.div class: "field" do %>
+    <%= form.label "#{t('models.expense.amount')} (#{t('currency')})" %>
+    <%= form.number_field :amount, precision: 2 %>
+<% end %>
+
+<%= tag.div class: "field" do %>
+    <%= form.label :date_incurred %>
+    <%= form.date_field :date_incurred %>
+<% end %>
+
+<%= tag.div class: "field" do %>
+    <%= form.label :expense_type_id %>
+    <%= form.collection_select :expense_type_id, ExpenseType.for_select, :id, :label %>
+<% end %>

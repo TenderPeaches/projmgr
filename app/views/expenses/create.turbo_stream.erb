@@ -1,0 +1,4 @@
+<%= turbo_stream.remove "new-expense_#{@expense.uid}" %>
+<%= turbo_stream.append "new-expenses" do %>
+    <%= render partial: "expenses/row", locals: { expense: expense } %>
+<% end %>

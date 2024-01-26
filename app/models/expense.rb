@@ -4,4 +4,6 @@
 # t.references :expense_type
 class Expense < Transaction
   belongs_to :expense_type
+  
+  attr_accessor :uid
 end

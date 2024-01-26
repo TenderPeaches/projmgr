@@ -9,13 +9,7 @@ class Shift < ApplicationRecord
       self.task = Task.where(task_category_id: :task_category_id).where(project_id: self.project_id).first # set task from project_id, task_category_id 
     end
   end
-
-  after_create do
-    if duration.nil?
-      set_duration
-    end
-  end
-
+  
   def self.update_duration      # update duration for all shifts when necessary
     Shift.all.each do |shift|
       if shift.duration.nil?    # ignore if duration is already set
@@ -24,11 +18,7 @@ class Shift < ApplicationRecord
     end
   end
 
-  def set_duration
-    self.update(duration: self.get_duration)
-  end
-
-  def get_duration
+  def duration
     (end_dt - start_dt) / 60        # assume duration as end_time - start_time, in minutes
   end
 

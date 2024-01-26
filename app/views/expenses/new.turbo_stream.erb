@@ -1,0 +1,3 @@
+<%= turbo_stream.append "new-expenses" do %>
+    <%= render partial: "expenses/form", locals: { expense: @expense } %>
+<% end %>

@@ -22,15 +22,12 @@ class ExpensesController < ApplicationController
   # POST /expenses or /expenses.json
   def create
     @expense = Expense.new(expense_params)
-
-    respond_to do |format|
-      if @expense.save
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created." }
-        format.json { render :show, status: :created, location: @expense }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+    if @expense.save
+      respond_to do |format|
+        format.turbo_stream
       end
+    else
+      flash.alert = expense.errors.full_messages
     end
   end
 
@@ -65,6 +62,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:amount, :date_incurred, :expense_type_id)
+      params.require(:expense).permit(:amount, :date_incurred, :expense_type_id, :label)
     end
 end

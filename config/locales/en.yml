@@ -4,21 +4,21 @@ en:
     ok: "OK"
     cancel: "Cancel"
     save: "Save"
-  do_x:
-    cancel: "Cancel %{x}"
-    new: "New %{x}"
-    add: "Add %{x}"
-    remove: "Remove %{x}"
-    edit: "Edit %{x}"
-    update: "Update %{x}"
-    create: "Create %{x}"
-    delete: "Delete %{x}"
-    select: "Select %{x}"
+  actions:
+    cancel: "Cancel %{thing}"
+    new: "New %{thing}"
+    add: "Add %{thing}"
+    remove: "Remove %{thing}"
+    edit: "Edit %{thing}"
+    update: "Update %{thing}"
+    create: "Create %{thing}"
+    delete: "Delete %{thing}"
+    select: "Select %{thing}"
   alerts:
   cta:
   feedback:
   models:
-    expenses: 
+    expense: 
       model_name: "Expense"
       expense_type: "Catégorie"
       date_incurred: "Date"

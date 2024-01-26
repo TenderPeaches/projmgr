@@ -12,12 +12,12 @@
   <% end %>
 
   <div>
-    <%= form.label :contact_id, style: "display: block" %>
+    <%= form.label :contact_id %>
     <%= form.collection_select :contact_id, Contact.order(:id), :id, :email %>
   </div>
 
   <div>
-    <%= form.label :client_id, style: "display: block" %>
+    <%= form.label :client_id %>
     <%= form.collection_select :client_id, Client.order(:id), :id, :company_name %>
   </div>
 

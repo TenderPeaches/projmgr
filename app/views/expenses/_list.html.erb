@@ -8,12 +8,9 @@
       <%= tag.th %>
     <% end %>
   <% end %>
-  <%= tag.tbody do %>
+  <%= tag.tbody id: "expenses-list" do %>
     <% expenses.each do |expense| %>
-        <%= tag.td expense.label %>
-        <%= tag.td expense.expense_type.label %>
-        <%= tag.td monetize(expense.amount) %>
-        <%= tag.td date_format(expense.date_incurred) %>
+        <%= render partial: "expenses/row", locals: { expense: expense } %>
     <% end %>
   <% end %>
 <% end %>
