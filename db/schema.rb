@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
   end
 
   create_table "expense_types", force: :cascade do |t|
-    t.string "name"
+    t.string "label"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,11 +69,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
 
   create_table "expenses", force: :cascade do |t|
     t.decimal "amount"
+    t.string "label"
     t.date "date_incurred"
     t.integer "expense_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "label"
     t.index ["expense_type_id"], name: "index_expenses_on_expense_type_id"
   end
 
@@ -137,7 +137,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.float "cost"
+    t.decimal "cost"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -160,14 +160,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.text "notes"
-    t.integer "task_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "start_dt"
     t.datetime "end_dt"
-    t.integer "duration"
+    t.text "notes"
+    t.integer "task_id", null: false
     t.integer "order_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["order_item_id"], name: "index_shifts_on_order_item_id"
     t.index ["task_id"], name: "index_shifts_on_task_id"
   end
@@ -181,9 +180,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
 
   create_table "task_categories", force: :cascade do |t|
     t.string "name"
+    t.boolean "default"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "default"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -197,7 +196,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "type"
-    t.float "amount"
+    t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -216,6 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_025643) do
   add_foreign_key "payments", "payment_methods"
   add_foreign_key "projects", "clients"
   add_foreign_key "receipts", "payments"
+  add_foreign_key "shifts", "order_items"
   add_foreign_key "shifts", "tasks"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "task_categories"

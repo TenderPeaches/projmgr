@@ -45,6 +45,32 @@ product__regular_dev_hourly = Product.create(name: "Regular Dev (Hourly)", cost:
 # order items - for now, single one is fine
 order_item__custard_wp = OrderItem.create(order: order__custard_wp, product: product__regular_dev_hourly)
 
+# expense types
+expense_type__publicity = ExpenseType.create(label: "Advertisement")
+expense_type__bad_debts = ExpenseType.create(label: "Bad debts")
+expense_type__business_taxes = ExpenseType.create(label: "Business taxes and licenses")
+expense_type__delivery = ExpenseType.create(label: "Delivery, freight, messenger services")
+expense_type__fuel_oil = ExpenseType.create(label: "Fuel and oil")
+expense_type__insurance_premiums = ExpenseType.create(label: "Insurance premiums")
+expense_type__interest = ExpenseType.create(label: "Interest")
+expense_type__maintenance = ExpenseType.create(label: "Maintenance and repairs")
+expense_type__management_fees = ExpenseType.create(label: "Management and administration fees")
+expense_type__meals_entertainment = ExpenseType.create(label: "Meals and entertainment expenses")
+expense_type__vehicle = ExpenseType.create(label: "Motor and ZE vehicle expenses")
+expense_type__offce = ExpenseType.create(label: "Office expenses")
+expense_type__convention = ExpenseType.create(label: "Convention fees")
+expense_type__supplies = ExpenseType.create(label: "Supplies")
+expense_type__legal = ExpenseType.create(label: "Legal and accounting expenses")
+expense_type__property_taxes = ExpenseType.create(label: "Property taxes")
+expense_type__rent = ExpenseType.create(label: "Rent")
+expense_type__salaries = ExpenseType.create(label: "Salaries, wages, employer contributions, employee benefits")
+expense_type__travel = ExpenseType.create(label: "Travel expenses")
+expense_type__telecom = ExpenseType.create(label: "Telecommunications expenses")
+expense_type__utilities = ExpenseType.create(label: "Electricity, heating, water")
+expense_type__capital_cost = ExpenseType.create(label: "Capital cost allowance")
+expense_type__terminal_loss = ExpenseType.create(label: "Terminal loss")
+expense_type__other = ExpenseType.create(label: "Other")
+
 # shifts
 Shift.create(start_dt: DateTime.parse('2023-02-15 16:55 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2023-02-15 17:35 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_coordination, notes: 'Meeting w/ Parinita to discuss client needs', order_item: order_item__custard_wp)
 Shift.create(start_dt: DateTime.parse('2023-03-11 19:10 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2023-03-11 19:50 -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Assess WordPress demo build', order_item: order_item__custard_wp)
