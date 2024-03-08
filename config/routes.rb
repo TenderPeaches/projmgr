@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+#=begin
   resources :invoices
   resources :estimates
   resources :credits
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'timekeeping', to: "shifts#new"
   get 'finances', to: "finances#index"
-  
+
   root "projects#index"       # route for /
+
+#=end
 end

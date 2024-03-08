@@ -1,0 +1,21 @@
+Lil game:
+
+Based off SG categories:
+    Infantry/Human
+    Mobile/Supplies
+    Aviary/Exploration
+    Organics/Bionics Science
+
+As a player, your goal is to help your faction by offering them support in one of the four categories
+
+    Each category is its own minigame thing
+        => supply/logistics/loadout management
+
++ final part of the gameplay being warfare/deployment, where the unit designs are put to use
+
+
+UsefulSuite:
+    ProjMgr (Billing, Counting hours, tracking expenses)
+    Homework (Cohabitation helper tool)
+    Blog (Blog template)
+    Shopper (Shopping platform)
