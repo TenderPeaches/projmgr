@@ -1,9 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @project %>
-
-<div>
+<%= tag.nav do %>
   <%= link_to "Back to projects", projects_path %>
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
-</div>
+<% end %>
+<%= render @project %>

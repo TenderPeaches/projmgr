@@ -1,0 +1,17 @@
+
+  <%= tag.table class: "list list--projects" do %>
+    <%= tag.thead do %>
+      <%= tag.tr do %>
+        <%= tag.th "Project" %>
+        <%= tag.th "..." %>
+      <% end %>
+    <% end %>
+    <%= tag.tbody do %>
+      <% projects.each do |project| %>
+        <%= tag.tr do %>
+          <%= tag.td do %><%= link_to project.label, project, { class: "button button--light" } %><% end %>
+          <%= tag.td class: "actions" do %><%= link_to "Edit", edit_project_path(project), { class: "button button--primary" } %><% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>

@@ -1,24 +1,24 @@
-<div class="project__shifts">
-    <table class="list">
-        <thead>
-            <tr>
-                <th><%= project.name %></th>
-                <th>Hours worked</th>
-                <th>Hours invoiced</th>
-                <th>Hours paid</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% project.tasks.each do |task| %>
-                <tr>
-                    <td><%= task.task_category.name %></td>
-                    <td><%= %></td>
-                    <td><%= %></td>
-                    <td><%= %></td>
-                </tr>
+<%= tag.div class: "project__shifts" do %>
+    <%= tag.table class: "list" do %>
+        <%= tag.thead do %>
+            <%= tag.tr do %>
+                <%= tag.th do %><%= project.name %><% end %>
+                <%= tag.th do %>Hours worked<% end %>
+                <%= tag.th do %>Hours invoiced<% end %>
+                <%= tag.th do %>Hours paid<% end %>
             <% end %>
-        </tbody>
+        <% end %>
+        <%= tag.tbody do %>
+            <% project.tasks.each do |task| %>
+                <%= tag.tr do %>
+                    <%= tag.td task.task_category.name %>
+                    <%= tag.td task.hours_worked %>
+                    <%= tag.td "TBI" %>
+                    <%= tag.td "TBI" %>
+                <% end %>
+            <% end %>
+        <% end %>
         <tfoot>
         </tfoot>
-    </table>
-</div>
+    <% end %>
+<% end %>

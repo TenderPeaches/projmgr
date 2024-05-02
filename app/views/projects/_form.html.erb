@@ -14,7 +14,7 @@
   <div>
     <%= form.label :client_id %>
     <%= form.collection_select :client_id, Client.order(:id), :id, :company_name %>
-    <%= link_to "Add client", new_client_path, { class: "btn btn--dark", style: "width: 100%; margin-top: 10px;"} %> <%# bad! change to stylesheets instead %>
+    <%= link_to "Add client", new_client_path, { class: "button button--dark", style: "width: 100%; margin-top: 10px;"} %> <%# bad! change to stylesheets instead %>
   </div>
 
   <div>

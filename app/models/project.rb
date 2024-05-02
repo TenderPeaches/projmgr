@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   has_many :shifts, through: :tasks
   has_many :events
 
+  scope :active, -> { where active: true }
+
   # after_save :generate_tasks # not sure if implementing like this for now, don't debug - tasks can be created manually for now, not too much overhead
 
   def label           # string => use as a quickhand identifier

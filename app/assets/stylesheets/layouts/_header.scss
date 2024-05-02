@@ -14,7 +14,7 @@ $color-primary-dark: scale-color($color-primary, $lightness: -10%);*/
   border-bottom: 4px solid $color-primary-darkest;
   background: linear-gradient($color-black, $color-primary-darkest);
 
-  .btn {
+  .button {
     flex: 1;
   }
 

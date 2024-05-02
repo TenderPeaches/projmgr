@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-#=begin
+  resources :projects
   resources :invoices
   resources :estimates
   resources :credits
@@ -13,12 +13,7 @@ Rails.application.routes.draw do
   resources :statements
   resources :expenses
   resources :expense_types
-  resources :events, :shifts, :tasks, :task_categories, :projects, :clients, :contacts
-
-  get 'timekeeping', to: "shifts#new"
-  get 'finances', to: "finances#index"
+  resources :events, :shifts, :tasks, :task_categories, :clients, :contacts
 
   root "projects#index"       # route for /
-
-#=end
 end

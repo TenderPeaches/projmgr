@@ -1,7 +1,7 @@
 
 @import "../config/variables";
 @import "../mixins/media";
-@import "btn";
+@import "button";
 
 .form {
   display: flex;
@@ -19,7 +19,7 @@
   }
 
   input[type=submit] {
-    @extend .btn--primary;
+    @extend .button;
     margin-top: var(--space-l);
     cursor: pointer;
     padding: var(--space-xs);
@@ -87,11 +87,6 @@
       width: 100%;
     }
   }
-}
-
-/* label.scss */
-.label {
-  font-style: italic;
 }
 
 /* object.scss */ 

@@ -14,6 +14,7 @@ contact__guylaine = Contact.create(first_name: "Guylaine", last_name: "Germain",
 client__self = Client.create(company_name: "OcellEnfadat")
 client__custard = Client.create(company_name: "Custard CS")
 client__guylaine = Client.create(company_name: "Guylaine Germain")
+client__pshpc = Client.create(company_name: "PSHPC")
 # client-contacts
 ClientContact.create(client: client__self, contact: contact__self)
 ClientContact.create(client: client__custard, contact: contact__ph)
@@ -22,28 +23,39 @@ ClientContact.create(client: client__guylaine, contact: contact__guylaine)
 # projects
 project__custard_wp = Project.create(name: "Custard Wordpress", active: true, client: client__custard)
 project__tra_gg = Project.create(name: "TRA - GG", active: true, client: client__guylaine)
+project__pshpc_patient_standardise = Project.create(name: "PSHPC - Patient Standardisé", active: true, client: client__pshpc)
 
 # task categories
 task_category__setup = TaskCategory.create(name: "Setup")
 task_category__coordination = TaskCategory.create(name: "Coordination")
 task_category__import = TaskCategory.create(name: "Import")
 task_category__dev = TaskCategory.create(name: "Development")
+task_category__meeting = TaskCategory.create(name: "Meeting")
+task_category__training = TaskCategory.create(name: "Training")
+task_category__role_playing = TaskCategory.create(name: "Role Playing")
 
 # tasks
 task__custardwp_setup = Task.create(task_category: task_category__setup, project: project__custard_wp)
 task__custardwp_coordination = Task.create(task_category: task_category__coordination, project: project__custard_wp)
 task__custardwp_import = Task.create(task_category: task_category__import, project: project__custard_wp)
 task__custardwp_dev = Task.create(task_category: task_category__dev, project: project__custard_wp)
+task__pshpc_meeting = Task.create(task_category: task_category__meeting, project: project__pshpc_patient_standardise)
+task__pshpc_training = Task.create(task_category: task_category__training, project: project__pshpc_patient_standardise)
+task__pshpc_role_playing = Task.create(task_category: task_category__role_playing, project: project__pshpc_patient_standardise)
 
 # orders
 order__custard_wp = Order.create(client: client__custard)
 order__tra_gg = Order.create(client: client__guylaine)
+order__pshpc = Order.create(client: client__pshpc)
 
 # products
 product__regular_dev_hourly = Product.create(name: "Regular Dev (Hourly)", cost: 100, description: "Generic web development work, hourly rate")
+product__pshpc_standardized_patient_training = Product.create(name: "Standardized Patient (Training)", cost: 19, description: "")
+product__pshpc_standardized_patient_acting = Product.create(name: "Standardized Patient (Acting)", cost: 25, description: "")
 
 # order items - for now, single one is fine
 order_item__custard_wp = OrderItem.create(order: order__custard_wp, product: product__regular_dev_hourly)
+order_item__pshpc = OrderItem.create(order: order__pshpc, product: product)
 
 # expense types
 expense_type__publicity = ExpenseType.create(label: "Advertisement")
@@ -120,3 +132,5 @@ Shift.create(start_dt: DateTime.parse('2023-06-07 16:31 -5', '%Y-%m-%d %I:%M %z'
 Shift.create(start_dt: DateTime.parse('2023-07-03 18:03 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2023-07-03 18:14    -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_coordination, notes: 'Call w/ Parinita for robots.txt file modification', order_item: order_item__custard_wp)
 Shift.create(start_dt: DateTime.parse('2023-07-05 17:25 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2023-07-05 17:35    -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Remove unused Wordpress installation', order_item: order_item__custard_wp)
 
+# pshpc
+Shift.create(start_dt: DateTime.parse('2024-04-20 10:30 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2024-04-20 12:00 -5', '%Y-%m-%d %I:%M %z'), task: task__pshpc_training, notes: "Meeting de formation (revue vidéo)", order_item: order_item__pshpc)

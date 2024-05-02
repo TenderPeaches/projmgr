@@ -1,8 +1,8 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Shifts</h1>
 
-<div id="shifts">
+<%= tag.h1 "Shifts" %>
+
+<%= tag.div id: "shifts" do %>
   <table class="list list--shifts">
     <thead>
       <tr>
@@ -17,18 +17,18 @@
     <tbody>
       <% @shifts.each do |shift| %>
         <tr>
-          <td><%= link_to shift.id, shift, { class: "btn btn--light" } %></td>
+          <td><%= link_to shift.id, shift, { class: "button button--light" } %></td>
           <td><%= shift.task.task_category.name %></td>
           <td><%= shift.task.project.name %></td>
           <td><%= shift.created_at %></td>
           <td><%= shift.duration %></td>
-          <td class="actions"><%= link_to "Edit", edit_shift_path(shift), { class: "btn btn--primary" } %>
+          <td class="actions"><%= link_to "Edit", edit_shift_path(shift), { class: "button button--primary" } %>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
     </tfoot>
-  </table>
-</div>
+  <% end %>
+<% end %>
 
-<%= link_to "Add shift", timekeeping_path, { class: "btn btn--primary" } %>
+<%= link_to "Add shift", new_shift_path, { class: "button button--primary" } %>

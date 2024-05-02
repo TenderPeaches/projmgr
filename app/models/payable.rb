@@ -1,0 +1,2 @@
+class Payable < ApplicationRecord
+end

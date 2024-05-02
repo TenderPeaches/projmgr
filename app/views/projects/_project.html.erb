@@ -8,8 +8,8 @@
   </div>
   <div class="object__module">
     <div class="object__action-menu">
-      <%= link_to "Timekeeping", timekeeping_path, { class: "btn btn--primary"} %>
-      <%= link_to "Edit", edit_project_path(project), { class: "btn btn--primary"} %>
+      <%= link_to "Timekeeping", new_shift_path, { class: "button button--primary"} %>
+      <%= link_to "Edit", edit_project_path(project), { class: "button button--primary"} %>
     </div>
     <div class="object__panel">
       <%= render "data_panel", locals: { data: [

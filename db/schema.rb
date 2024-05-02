@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_20_143914) do
   create_table "client_contacts", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "client_id", null: false
@@ -68,9 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.decimal "amount"
-    t.string "label"
-    t.date "date_incurred"
+    t.decimal "amount", precision: 8, scale: 2
+    t.string "name"
     t.integer "expense_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
 
   create_table "order_items", force: :cascade do |t|
     t.float "quantity"
-    t.float "subtotal"
+    t.decimal "subtotal"
     t.integer "product_id", null: false
     t.integer "order_id", null: false
     t.datetime "created_at", null: false
@@ -98,11 +97,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "client_id", null: false
-    t.float "subtotal"
-    t.float "gst"
-    t.float "pst"
-    t.float "discount"
-    t.float "total"
+    t.decimal "subtotal"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.decimal "discount"
+    t.decimal "total"
     t.string "notes"
     t.datetime "deadline"
     t.datetime "created_at", null: false
@@ -116,6 +115,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
     t.integer "statement_id", null: false
     t.index ["order_id"], name: "index_orders_statements_on_order_id"
     t.index ["statement_id"], name: "index_orders_statements_on_statement_id"
+  end
+
+  create_table "payables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -197,6 +201,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_204440) do
   create_table "transactions", force: :cascade do |t|
     t.string "type"
     t.decimal "amount"
+    t.datetime "date_incurred"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

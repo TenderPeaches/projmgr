@@ -1,7 +1,7 @@
 module ApplicationHelper
     def monetize(amount)
         number_to_currency(amount, precision: 2, unit: "$")
-    end 
+    end
 
     def date_format(date)
         date.strftime("%Y-%m-%d")

@@ -1,26 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<%= tag.h1 "Projects", id: "title" %>
+<%= tag.div class: "actions" do %>
+  <%= turbo_link_button "New project", new_project_path %>
+<% end %>
+<%= tag.div id: "data" %>
+<%= tag.div id: "form" %>
+<%= tag.div id: "projects" do %>
+  <%= project_list @projects %>
+<% end %>
 
-<h1>Projects</h1>
-
-<div id="projects">
-  <table class="list list--projects">
-    <thead>
-      <tr>
-        <th>Project</th>
-        <th>...</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.label, project, { class: "btn btn--light" } %></td>
-          <td class="actions"><%= link_to "Edit", edit_project_path(project), { class: "btn btn--primary" } %>
-        </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-    </tfoot>
-  </table>
-</div>
-
-<%= link_to "New project", new_project_path, { class: "btn btn--primary"} %>

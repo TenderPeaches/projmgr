@@ -2,13 +2,13 @@
 
 @import "../config/variables";
 
-.btn {
+.button {
   /* Common button attributes */ 
   display: inline-block;
   padding: var(--space-xxs) var(--space-m);
   border-radius: var(--border-radius);
   background-origin: border-box; // Invisible borders with linear gradients
-  background-color: transparent;
+  background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
   border: solid 2px transparent;
   font-weight: bold;
   text-decoration: none;
@@ -16,6 +16,24 @@
   outline: none;
   transition: filter 400ms, color 200ms;
   text-align: center;
+  color: $color-white;
+
+  a {
+    color: $color-white;
+  }
+
+  a:focus,
+  a:active,
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    color: $color-white;
+    filter: saturate(1.4) brightness(115%);
+  }
+  a:hover {
+    color: $color-secondary;
+  }
 
   &:hover,
   &:focus,
@@ -24,30 +42,7 @@
     transition: filter 250ms, color 200ms;
   }
 
-  /* btn--primary, default button */
-  &--primary {
-    color: $color-white;
-    background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
-
-    a {
-      color: $color-white;
-    }
-
-    a:focus,
-    a:active,
-    &:hover,
-    &:focus,
-    &:focus-within,
-    &:active {
-      color: $color-white;
-      filter: saturate(1.4) brightness(115%);
-    }
-    a:hover {
-      color: $color-secondary;
-    }
-  }
-
-  /* btn--secondary, call-to-action */
+  /* button--secondary, call-to-action */
   &--secondary {
     color: $color-white;
     background: linear-gradient($color-secondary-dark 75%, $color-secondary-alt-dark), $color-secondary-alt;
@@ -61,10 +56,10 @@
     }
   }
 
-  /* btn--light, cancel */
+  /* button--light, cancel */
   &--light {
     color: $color-dark;
-    background-color: $color-light;
+    background: $color-light;
 
     &:hover,
     &:focus,
@@ -74,7 +69,7 @@
     }
   }
 
-  /* btn--dark */
+  /* button--dark */
   &--dark {
     color: $color-white;
     border-color: $color-dark;

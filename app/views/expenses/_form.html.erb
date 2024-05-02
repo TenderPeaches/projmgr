@@ -1,9 +1,9 @@
 <% if expense.new_record? %>
-  <% expense.uid = Time.now.to_i %>
+    <% expense.uid = Time.now.to_i %>
 <% end %>
 <%= tag.fieldset id: expense.new_record? ? "new-expense_#{expense.uid}" : dom_id(expense) do %>
-  <%= tag.legend t('actions.new', thing: t('models.expense.model_name')) %>
-  <%= form_with model: expense do |form| %>
+    <%= tag.legend t('actions.new', thing: t('models.expense.model_name')) %>
+    <%= model_form_with model: expense do |form| %>
 
     <%= render partial: "expenses/form_errors", locals: { expense: expense } %>
     <%= render partial: "expenses/fields", locals: { form: form } %>
