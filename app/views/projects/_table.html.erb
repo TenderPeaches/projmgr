@@ -10,7 +10,9 @@
       <% projects.each do |project| %>
         <%= tag.tr do %>
           <%= tag.td do %><%= link_to project.label, project, { class: "button button--light" } %><% end %>
-          <%= tag.td class: "actions" do %><%= link_to "Edit", edit_project_path(project), { class: "button button--primary" } %><% end %>
+          <%= tag.td class: "actions" do %>
+            <%= turbo_link_button "Edit", edit_project_path(project) %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

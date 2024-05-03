@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Db</title>
+  <%= tag.head do %>
+    <%= tag.title "ProjMgr" %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
+  <% end %>
 
-  <body>
-    <header class="nav">
+  <%= tag.body do %>
+    <%= tag.header do %>
       <%= render "layouts/header" %>
-    </header>
-    <div class="content">
+    <% end %>
+    <%= tag.content do %>
       <%= yield %>
-    </div>
-    <footer>
+    <% end %>
+    <%= tag.footer do %>
       <%= render "layouts/footer" %>
-    </footer>
-  </body>
+    <% end %>
+  <% end %>
 </html>

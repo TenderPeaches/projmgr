@@ -1,29 +1,23 @@
-<div id="<%= dom_id project %>" class="object">
-  <div class="object__header">
-    <h2><%= project.name %></h2>
+<%= tag.div id: dom_id(project), class: "panel" do %>
+  <%= tag.div class: "header" do %>
+    <%= tag.h2 project.name %>
     <% unless project.active %>
-      <h4 class="label label--inactive">Inactive</h4>
+      <%= tag.h4 "Inactive", class: "label label--inactive" %>
     <% end %>
-    <span>Client: <%= link_to project.client.company_name, project.client %></span>
-  </div>
-  <div class="object__module">
-    <div class="object__action-menu">
+    <%= tag.span do %>
+      Client: <%= link_to project.client.company_name, project.client %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: "body" do %>
+    <%= tag.div class: "actions" do %>
       <%= link_to "Timekeeping", new_shift_path, { class: "button button--primary"} %>
       <%= link_to "Edit", edit_project_path(project), { class: "button button--primary"} %>
-    </div>
-    <div class="object__panel">
-      <%= render "data_panel", locals: { data: [
-        { label: "Hrs worked", value: project.hours_worked },
-        { label: "Hrs billed", value: project.hours_billed },
-        { label: "Pending pay", value: number_to_currency(project.pending_pay, precision: 2) },
-        { label: "Total pay", value: number_to_currency(project.total_pay, precision: 2) }, ] } %>
-    </div>
-    <div class="object__panel">
+    <% end %>
+      <%= project_data project %>
       <%= render partial: "task_hours", locals: { project: project } %>      
-    </div>
     <% # manage statements (-> statement view) %>
     <% # link_to "Invoicing", statements_path %>
     <% # current order (order.order_items) %>
     <% # render "shifts", project: project %>
-  </div>
-</div>
+  <% end %>
+<% end %>

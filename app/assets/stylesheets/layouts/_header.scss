@@ -2,10 +2,9 @@
 @import "../mixins/media";
 @import "../config/variables";
 
-/*
-$color-primary: #7995e1;
-$color-primary-dark: scale-color($color-primary, $lightness: -10%);*/
-.header {
+/* page header */
+
+header {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xxs);
