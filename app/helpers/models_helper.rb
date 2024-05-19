@@ -16,7 +16,7 @@
             end
 
             def model_delete_action(base_path)
-                turbo_link_button(t('keywords.delete'), base_path, :delete )
+                turbo_link_button(t('keywords.delete'), base_path, method: :delete )
             end
 
             def model_cancel_form_button(base_path)

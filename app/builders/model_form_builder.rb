@@ -54,14 +54,6 @@ class ModelFormBuilder < ActionView::Helpers::FormBuilder
         end
     end
 
-    def datetime_input(attribute, options, &block)
-        field_block(attribute, options) do
-            safe_join [
-                (field_label(attribute, options[:label]) unless options[:label] == false), datetime_field(attribute, merge_input_options({class: "#{"is-invalid" if has_error?(attribute)}"}, options[:input_html])),
-            ]
-        end
-    end
-
     def text_input(attribute, options = {})
         field_block(attribute, options) do
             safe_join [
@@ -158,8 +150,6 @@ class ModelFormBuilder < ActionView::Helpers::FormBuilder
                         }, {data: {date_select: true}})
                 },
             ]
-        when :datetime then
-            datetime_field(attribute, options)
         when :integer then number_field(attribute, options)
         when :string
             case attribute.to_s
@@ -197,7 +187,7 @@ class ModelFormBuilder < ActionView::Helpers::FormBuilder
 
     def error_text(attribute)
         if has_error? attribute
-            tag.div @object.errors[attribute].join("<br />").html_safe, class: "form-errors"
+            tag.div @object.errors[method].join("<br />").html_safe, class: "form-errors"
         end
     end
 

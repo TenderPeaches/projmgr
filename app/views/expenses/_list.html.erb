@@ -1,10 +1,10 @@
 <%= tag.table class: "list list--expenses", id: "expenses" do  %>
   <%= tag.thead do %>
     <%= tag.tr do %>
-      <%= tag.th t('models.expenses.label') %>
-      <%= tag.th t('models.expenses.expense_type') %>
-      <%= tag.th t('models.expenses.amount') %>
-      <%= tag.th t('models.expenses.date_incurred') %>
+      <%= tag.th t('activerecord.attributes.expenses.name') %>
+      <%= tag.th t('activerecord.attributes.expenses.type') %>
+      <%= tag.th t('activerecord.attributes.expenses.amount') %>
+      <%= tag.th t('activerecord.attributes.expenses.incurred_dt') %>
       <%= tag.th %>
     <% end %>
   <% end %>

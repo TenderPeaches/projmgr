@@ -17,6 +17,37 @@ en:
   alerts:
   cta:
   feedback:
+  activerecord:
+    models:
+      client: Client
+      contact: Contact
+      expense: Expense
+      project: Project
+      shift: Shift
+    attributes:
+      client:
+        company_name: "Business name"
+      contact: 
+        first_name: "First name"
+        last_name: "Last name"
+        email: "Email address"
+        phone: "Phone number"
+        notes: "Contact notes"
+      expense:
+        amount: "Amount"
+        name: "Name"
+        incurred_dt: "Incurred on"
+        type: "Category"
+      project: 
+        name: "Name"
+        active: "Is active?"
+        client: "Client"
+      shift:
+        start_dt: "Start time"
+        end_dt: "End time"
+        notes: "Notes"
+        task: "Task"
+        order_item: "Order item"
   models:
     expense: 
       model_name: "Expense"
