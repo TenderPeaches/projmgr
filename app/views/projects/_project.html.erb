@@ -5,7 +5,7 @@
       <%= tag.h4 "Inactive", class: "label label--inactive" %>
     <% end %>
     <%= tag.span do %>
-      Client: <%= link_to project.client.company_name, project.client %>
+      Client: <%= link_to project.client.company_name, client_path(project.client) %>
     <% end %>
   <% end %>
   <%= tag.div class: "body" do %>
@@ -14,7 +14,7 @@
       <%= link_to "Edit", edit_project_path(project), { class: "button button--primary"} %>
     <% end %>
       <%= project_data project %>
-      <%= render partial: "task_hours", locals: { project: project } %>      
+      <% #  render partial: "task_hours", locals: { project: project } %>      
     <% # manage statements (-> statement view) %>
     <% # link_to "Invoicing", statements_path %>
     <% # current order (order.order_items) %>

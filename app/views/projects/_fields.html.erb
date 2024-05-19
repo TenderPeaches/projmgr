@@ -1,0 +1,9 @@
+
+  <%= form.field :client, collection: Client.all, text_method: :company_name, value_method: :id %>
+
+  <%= tag.div class: "actions" do %>
+    <%= link_to "Add client", new_client_path, { class: "button button--dark" } %> <%# bad! change to stylesheets instead %>
+  <% end %>
+  
+  <%= form.field :name, label: "Project Name" %>
+  <%= form.field :active %>

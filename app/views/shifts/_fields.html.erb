@@ -1,0 +1,10 @@
+<%= form.field :project, collection: Project.order(:id), value_method: :id, text_method: :name %>
+
+<%= form.field :task_category, collection: TaskCategory.order(:id), value_method: :id, text_method: :name %>
+
+<%= form.field :start_dt %>
+<%= form.field :end_dt %>
+
+<%= form.field :notes, as: :text %>
+
+<%= render "shared/data", data: [{ label: "Duration", value: @shift.duration }] %>

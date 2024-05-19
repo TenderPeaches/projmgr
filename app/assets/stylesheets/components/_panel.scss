@@ -1,0 +1,19 @@
+.panel {
+    padding: var(--size-m);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header {
+        padding: var(--size-xxs) var(--size-m);
+        font-size: var(--font-size-xl);
+
+        h1, h2, h3 {
+            margin: var(--size-xxs) var(--size-s) var(--size-l);
+        }
+    }
+
+    .body {
+        padding: var(--size-m);
+    }
+}

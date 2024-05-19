@@ -1,12 +1,12 @@
 @import "../config/variables";
 
-.actions {
+.actions, nav {
     display: flex;
-    padding: var(---space-xxxs);
+    padding: var(--size-xxxs);
     border: var(--border-thick-dark);
 }
 
-.actions * {
+.actions *, nav * {
     flex: 1 1 0px;
-    margin: 0 var(--space-xxxs);
+    margin: 0 var(--size-xxxs);
 }

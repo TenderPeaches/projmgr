@@ -1,9 +1,14 @@
 class ShiftsController < ApplicationController
   before_action :set_shift, only: %i[ show edit update destroy ]
 
-  # GET /shifts or /shifts.json
+  # /projects/{project_id}/shifts
   def index
-    @shifts = Shift.all
+    set_project
+    if @project
+      @shifts = @project.shifts
+    else
+      @shifts = Shift.all
+    end
   end
 
   # GET /shifts/1 or /shifts/1.json
@@ -59,13 +64,16 @@ class ShiftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_shift
-      @shift = Shift.find(params[:id])
+      @shift = Shift.find_by_id params[:id]
+    end
+
+    def set_project
+      @project = Project.find_by_id params[:project_id]
     end
 
     # Only allow a list of trusted parameters through.
     def shift_params
-      params.require(:shift).permit(:duration, :notes, :task_category_id, :project_id, :start, :end, :task_id)     # need to update these!! check with model too
+      params.require(:shift).permit(:duration, :notes, :task_category_id, :project_id, :start, :end, :task_id)
     end
 end

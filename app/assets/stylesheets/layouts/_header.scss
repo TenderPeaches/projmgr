@@ -7,9 +7,9 @@
 header {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xxs);
+  gap: var(--size-xxs);
   justify-content: space-around;
-  padding: var(--space-l);
+  padding: var(--size-l);
   border-bottom: 4px solid $color-primary-darkest;
   background: linear-gradient($color-black, $color-primary-darkest);
 
@@ -18,6 +18,6 @@ header {
   }
 
   @include media(lg) {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--size-xl);
   }
 }

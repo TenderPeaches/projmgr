@@ -4,15 +4,22 @@
 .data {
     border: solid 2px $color_primary_darker;
     width: 100%;
+    font-size: var(--font-size-l);
+    margin: var(--size-m);
 }
 
 .data-row {
     display: flex;
+    padding: var(--size-xxxs);
+}
+
+.data-row:nth-child(2n) {
+    background: $color-primary-lighter;
 }
 
 .data-panel td,
 .data-panel th {
-    padding: var(--space-xs);
+    padding: var(--size-xs);
     border: solid 1px $color_primary_dark;
 }
 
@@ -27,4 +34,5 @@
 
 .data-value {
     text-align: right;
+    margin-right: var(--size-m);
 }

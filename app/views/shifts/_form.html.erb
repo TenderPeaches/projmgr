@@ -1,48 +1,7 @@
-<%= form_with(model: shift, html: { class: 'form'}) do |form| %>
-  <% if shift.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(shift.errors.count, "error") %> prohibited this shift from being saved:</h2>
+<%= model_form_with(model: shift) do |form| %>
+  <%= render "shifts/fields", form: form %>
 
-      <ul>
-        <% shift.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :project_id %>
-    <%= form.collection_select :project_id, Project.order(:id), :id, :name %>
-  </div>
-  <div>
-    <%= form.label :task_category_id %>
-    <%= form.collection_select :task_category_id, TaskCategory.order(:id), :id, :name %>
-  </div>
-  <div>
-    <%= form.label :start %>
-    <%= form.datetime_local_field :start %>
-  </div>
-  <div>
-    <%= form.label :end %>
-    <%= form.datetime_local_field :end %>
-  </div>
-
-  <div>
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
-  </div>
-
-  <div>
-    <%= form.label :task_id %>
-    <%= form.collection_select :task_id, Task.order(:id), :id, :project_id %>
-  </div>
-
-  <div>
-    <%= form.label :duration %>
-    <%= @shift.duration %>
-  </div>
-  <div>
+  <%= tag.div class: "actions" do %>
     <%= form.submit %>
-  </div>
+  <% end %>
 <% end %>

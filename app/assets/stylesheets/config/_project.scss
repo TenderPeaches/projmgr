@@ -4,15 +4,15 @@
 @import "../mixins/media";
 
 content {
-  margin: 0 var(--space-m);
-  padding: var(--space-xs) var(--space-m);
-  gap: var(--space-m);
+  margin: 0 var(--size-m);
+  padding: var(--size-xs) var(--size-m);
+  gap: var(--size-m);
   display: flex;
   flex-direction: column;
   background: scale-color($color-background, $lightness: 10%);
 
   @include media(md) {
-    padding: var(--space-l) 15%;
+    padding: var(--size-l) 15%;
     margin: 0 15%;
   }
 }

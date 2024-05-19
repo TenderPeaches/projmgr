@@ -3,13 +3,13 @@
 /* self-contained part of a page, that may come with its own header, data, form, actions, etc. */
 
 section {
-    margin: var(--space-m);
-    padding: var(---space-xs);
+    margin: var(--size-m);
+    padding: var(---size-xs);
     border: var(--border-thick-dark);
 
     /* section header */
     .header {
-        margin-bottom: var(--space-l);
+        margin-bottom: var(--size-l);
     }
 
     /* section body */

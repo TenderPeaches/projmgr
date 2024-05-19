@@ -5,7 +5,7 @@
 .button {
   /* Common button attributes */ 
   display: inline-block;
-  padding: var(--space-xxs) var(--space-m);
+  padding: var(--size-xxs) var(--size-m);
   border-radius: var(--border-radius);
   background-origin: border-box; // Invisible borders with linear gradients
   background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
