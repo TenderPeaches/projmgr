@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 
     # GET /projects
     def index
-        @client = Client.all                 # list of all active projects
+        @clients = Client.all                 # list of all active projects
     end
 
     # GET /projects/1

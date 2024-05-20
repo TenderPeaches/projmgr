@@ -1,0 +1,21 @@
+<%# generic model list, responsive to CRUD options %>
+<%= tag.table class: "list list--#{model.class.model_name.route_key.kebabcase}" do %>
+    <%= tag.thead do %>
+        <%= tag.tr do %>
+        <%= tag.th "#{model.class.model_name.human}" %>
+        <%= tag.th "..." %>
+        <% end %>
+    <% end %>
+    <%= tag.tbody id: "#{model.class.model_name.route_key.kebabcase}" do %>
+        <% models.each do |list_model| %>
+            <%= tag.tr do %>
+                <%= tag.td do %>
+                    <%= link_to list_model.to_s, list_model, { class: "button button--light" } %>
+                <% end %>
+                <%= tag.td class: "actions" do %>
+                    <%= turbo_link_button "Edit", public_send("edit_#{model.class.model_name.singular_route_key}_path", list_model) %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>

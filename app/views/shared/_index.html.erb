@@ -6,5 +6,5 @@
 <%= tag.div id: "data" %>
 <%= tag.div id: "form" %>
 <%= tag.div id: model.class.model_name.route_key.kebabcase do %>
-  <%= render "#{model.class.model_name.route_key}/list", model.class.model_name.plural.to_sym => models%>
+  <%= render "#{model.class.model_name.route_key}/list", model.class.model_name.plural.to_sym => models %>
 <% end %>
