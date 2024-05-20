@@ -14,16 +14,27 @@ en:
     create: "Create %{thing}"
     delete: "Delete %{thing}"
     select: "Select %{thing}"
+    back_to: "Back to %{thing}"
   alerts:
   cta:
   feedback:
   activerecord:
     models:
-      client: Client
-      contact: Contact
-      expense: Expense
-      project: Project
-      shift: Shift
+      client: 
+        one: Client
+        other: Clients
+      contact: 
+        one: Contact
+        other: Contacts
+      expense: 
+        one: Expense
+        other: Expenses
+      project: 
+        one: Project
+        other: Projects
+      shift: 
+        one: Shift
+        other: Shifts
     attributes:
       client:
         company_name: "Business name"

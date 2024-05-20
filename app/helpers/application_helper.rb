@@ -6,4 +6,13 @@ module ApplicationHelper
     def date_format(date)
         date.strftime("%Y-%m-%d")
     end
+
+    # see locales .yml files, under category "actions"
+    def action_label(action, object = "")
+        # translation_label, must be a valid key from the t() locales
+        t_label = "actions.#{action.to_s}"
+        if I18n.exists?(t_label, I18n.locale)
+            t("actions.#{action.to_s}", thing: object)
+        end
+    end
 end

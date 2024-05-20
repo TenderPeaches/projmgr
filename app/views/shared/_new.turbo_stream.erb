@@ -1,0 +1,6 @@
+<%# generic update model action %>
+<%= turbo_stream.update :title, action_label(:new, model.class.model_name.human) %>
+
+<%= turbo_stream.update :form do %>
+  <%= render "#{model.class.model_name.route_key}/form", model.class.model_name.singular.to_sym => model %>
+<% end %>

@@ -1,0 +1,10 @@
+<%## default model index template %>
+<%= tag.h1 model.class.model_name.human(count: 2), id: "title" %>
+<%= tag.div class: "actions" do %>
+  <%= turbo_link_button action_label(:new, model.class.model_name.human), public_send("new_#{model.class.model_name.singular_route_key}_path") %>
+<% end %>
+<%= tag.div id: "data" %>
+<%= tag.div id: "form" %>
+<%= tag.div id: model.class.model_name.route_key.kebabcase do %>
+  <%= render "#{model.class.model_name.route_key}/list", model.class.model_name.plural.to_sym => models%>
+<% end %>

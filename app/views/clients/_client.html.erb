@@ -1,7 +1,2 @@
-<div id="<%= dom_id client %>">
-  <p>
-    <strong>Company name:</strong>
-    <%= client.company_name %>
-  </p>
-
-</div>
+<%= render "shared/data", data: [
+  { label: Client.human_attribute_name(:company_name), value: client.company_name }, ] %>

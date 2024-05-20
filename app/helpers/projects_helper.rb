@@ -1,8 +1,4 @@
 module ProjectsHelper
-    def project_list(projects)
-        render("projects/table", projects: projects)
-    end
-
     def project_data(project)
         render "shared/data", data: [
             { label: "Hrs worked", value: project.hours_worked },

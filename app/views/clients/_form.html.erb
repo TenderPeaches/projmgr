@@ -1,22 +1,7 @@
-<%= form_with(model: client, html: { class: 'form'}) do |form| %>
-  <% if client.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<%= model_form_with(model: client, class: 'form') do |form| %>
+  <%= render "clients/fields", form: form %>
 
-      <ul>
-        <% client.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
-  </div>
-
-  <div>
+  <%= tag.div class: "actions" do %>
     <%= form.submit %>
-  </div>
+  <% end %>
 <% end %>

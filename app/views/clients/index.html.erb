@@ -1,14 +1,1 @@
-
-
-<%= tag.h1 "Clients" %>
-
-<%= tag.div id: "clients" do %>
-  <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Show this client", client %>
-    </p>
-  <% end %>
-<% end %>
-
-<%= link_to "New client", new_client_path %>
+<%= render "shared/index", model: Client.new, models: @clients %>

@@ -5,6 +5,6 @@
 <%= tag.div id: "data" %>
 <%= tag.div id: "form" %>
 <%= tag.div id: "projects" do %>
-  <%= project_list @projects %>
+  <%= render "projects/list", projects: @projects %>
 <% end %>
 

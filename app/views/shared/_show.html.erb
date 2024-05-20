@@ -1,0 +1,5 @@
+<%# generic show model action %>
+<%= tag.nav do %>
+  <%= link_button_to action_label(:back_to, model.class.model_name.human(count: 2)), public_send("#{p.class.model_name.route_key}_path") %>
+<% end %>
+<%= render model %>
