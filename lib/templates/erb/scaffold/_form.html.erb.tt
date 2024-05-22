@@ -1,5 +1,5 @@
-<%%= model_form_with(model: <%= model_resource_name %> %>, class: 'form') do |form| %>
-    <%%= render <%= "#{plural_table_name}/fields" %>, form: form %>
+<%%= model_form_with(model: <%= model_resource_name %>, class: 'form') do |form| %>
+    <%%= render "<%= "#{plural_table_name}/fields" %>", form: form %>
 
     <%%= tag.div do %>
         <%%= turbo_link_button action_label(:new, <%= class_name %>.new), new_<%= singular_table_name %>_path(<%= singular_table_name %>: <%= model_resource_name %>) %>

@@ -32,6 +32,10 @@ module ModelsHelper
         form.submit label
     end
 
+    def model_title(model)
+        "#{model.class.model_name.plural.kebabcase}-title"
+    end
+
     def model_form_for(name, *args, &block)
         # set ModelFormBuilder as the form builder
         options = args.extract_options!.merge(builder: ModelFormBuilder)
