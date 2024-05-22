@@ -1,30 +1,35 @@
 
 module ModelsHelper
     # base_path: the model's CRUD base path as an URL string, like the result of article_path(:id)
-    def model_edit_delete_actions(base_path)
+    def model_edit_delete_actions(base_path, options = {})
         [
             # edit model button
-            model_edit_action(base_path),
+            model_edit_action(base_path, options[:edit_label]),
             # delete model button
-            model_delete_action(base_path)
+            model_delete_action(base_path, options[:delete_label])
         ].join('').html_safe
     end
 
-    def model_edit_action(base_path)
+    def model_edit_action(base_path, label = t('keywords.edit'))
         #! maybe there's a safer way to do the route but this works as long as rails routing naming conventions hold
-        turbo_link_button(t('keywords.edit'), "#{base_path}/edit")
+        turbo_link_button(label, "#{base_path}/edit")
     end
 
-    def model_delete_action(base_path)
-        turbo_link_button(t('keywords.delete'), base_path, method: :delete )
+    def model_delete_action(base_path, label = nil)
+        turbo_link_button(label || t('keywords.delete'), base_path, method: :delete )
     end
 
-    def model_cancel_form_button(base_path)
-        turbo_link_button(t('keywords.cancel'), "#{base_path}/0")
+    def model_new_action(base_path, label = nil)
+        turbo_link_button(label || t('keywords.new'), "#{base_path}/new")
     end
 
-    def model_submit_button(form)
-        form.submit "#{form.object.new_record? ? "Create" : "Update"} #{form.object.class.to_s}"
+    def model_cancel_form_button(base_path, label = nil)
+        turbo_link_button(label || t('keywords.cancel'), "#{base_path}/0")
+    end
+
+    def model_submit_button(form, label = nil)
+        label = label || "#{(form.object.new_record? ? "Create" : "Update")} #{form.object.class.to_s}"
+        form.submit label
     end
 
     def model_form_for(name, *args, &block)
@@ -48,13 +53,6 @@ module ModelsHelper
         options = options.reverse_merge(builder: ModelFormBuilder)
         form_with(model: model, scope: scope, url: url, format: format, class: "form#{(options.has_key? :class) ? " #{options[:class]}" : ""}", **options, &block)
     end
-
-    ## these ones shouldn't be in pxs-forms (or should they? maybe to consolidate them - TBD)
-=begin
-    def model_update(model_class)
-        turbo_stream.update :title, Client.model_name.human(count: 2)
-<%= turbo_stream.update :form %>
-=end
 end
 
 ActionView::Base.send :include, ModelsHelper

@@ -1,14 +1,1 @@
-
-
-<%= tag.h1 "Client contacts" %>
-
-<%= tag.div id: "client_contacts" do %>
-  <% @client_contacts.each do |client_contact| %>
-    <%= render client_contact %>
-    <p>
-      <%= link_to "Show this client contact", client_contact %>
-    </p>
-  <% end %>
-<% end %>
-
-<%= link_to "New client contact", new_client_contact_path %>
+<%= render "shared/index", model: ClientContact.new, models: @client_contacts %>

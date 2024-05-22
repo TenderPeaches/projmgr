@@ -1,10 +1,1 @@
-
-
-<%= render @client_contact %>
-
-<div>
-  <%= link_to "Edit this client contact", edit_client_contact_path(@client_contact) %> |
-  <%= link_to "Back to client contacts", client_contacts_path %>
-
-  <%= button_to "Destroy this client contact", @client_contact, method: :delete %>
-</div>
+<%= render "shared/show", model: @client_contact %>

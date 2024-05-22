@@ -1,0 +1,1 @@
+<%%= render "shared/create", model: @<%= model_resource_name %> %>
