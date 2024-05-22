@@ -1,54 +1,13 @@
-<%= form_with(model: contact, html: { class: 'form'}) do |form| %>
-  <% if contact.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<%= model_form_with(model: contact, class: 'form') do |form| %>
+    <%= render "contacts/fields", form: form %>
 
-      <ul>
-        <% contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= tag.div do %>
+        <%= turbo_link_button action_label(:new, Contact.new), new_contact_path(contact: contact) %>
+        <%= tag.div id: "contact-form" %>
+        <%= tag.div id: "contacts" %>
+    <% end %>
 
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div>
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
-  </div>
-
-  <div>
-    Clients:
-    <ul>
-      <%= form.fields_for :clients do |clients_form| %>
-        <li>
-          <%= clients_form.label :company_name %>
-          <%= clients_form.text_field :company_name %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <%= tag.div class: "actions" do %>
+        <%= form.submit %>
+    <% end %>
 <% end %>

@@ -1,27 +1,6 @@
-<div id="<%= dom_id contact %>">
-  <p>
-    <strong>First name:</strong>
-    <%= contact.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= contact.last_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= contact.email %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= contact.phone %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= contact.notes %>
-  </p>
-
-</div>
+<%= render "shared/data", data: [
+    data_pair(Contact.human_attribute_name(:name), contact.name),
+    data_pair(Contact.human_attribute_name(:email), contact.email),
+    data_pair(Contact.human_attribute_name(:phone), contact.phone),
+    data_pair(Contact.human_attribute_name(:notes), contact.notes),
+]%>

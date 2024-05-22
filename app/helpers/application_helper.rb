@@ -15,4 +15,9 @@ module ApplicationHelper
             t("actions.#{action.to_s}", thing: object)
         end
     end
+
+    # define a {label: "...", value: "..."} hash
+    def data_pair(label, value)
+        { label: label, value: value }
+    end
 end
