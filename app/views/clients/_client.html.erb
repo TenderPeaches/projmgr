@@ -1,3 +1,8 @@
 <%= render "shared/data", data: [
   { label: Client.human_attribute_name(:company_name), value: client.company_name }, ] %>
 <%= render client.contacts %>
+<%= tag.div id: "contact-form" %>
+<%= tag.div id: "contact-actions", class: "actions" do %>
+    <%= turbo_link_button action_label(:new, Contact.model_name.human), new_contact_path(client_id: client.id) %>
+<% end %>
+<%= tag.div id: "contact-data" %>

@@ -1,11 +1,5 @@
-<%= model_form_with(model: contact, class: 'form') do |form| %>
+<%= model_form_with(model: contact, class: 'form', url: contacts_path(client_id: options[:client_id])) do |form| %>
     <%= render "contacts/fields", form: form %>
-
-    <%= tag.div do %>
-        <%= turbo_link_button action_label(:new, Contact.new), new_contact_path(contact: contact) %>
-        <%= tag.div id: "contact-form" %>
-        <%= tag.div id: "contacts" %>
-    <% end %>
 
     <%= tag.div class: "actions" do %>
         <%= form.submit %>

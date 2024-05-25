@@ -57,6 +57,16 @@ module ModelsHelper
         options = options.reverse_merge(builder: ModelFormBuilder)
         form_with(model: model, scope: scope, url: url, format: format, class: "form#{(options.has_key? :class) ? " #{options[:class]}" : ""}", **options, &block)
     end
+
+    def model_form_name(model)
+        if model.is_a? ActiveRecord::Base
+            model_class = model
+        else
+            model_class = model.class
+        end
+
+        "#{model_class.model_name.singular.kebabcase}-form"
+    end
 end
 
 ActionView::Base.send :include, ModelsHelper

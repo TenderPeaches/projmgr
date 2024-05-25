@@ -3,7 +3,6 @@
 /* a data element contains bits of data, usually in a `label => value` style */
 .data {
     border: solid 2px $color_primary_darker;
-    width: 100%;
     font-size: var(--font-size-l);
     margin: var(--size-m);
 }

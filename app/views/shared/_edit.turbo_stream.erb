@@ -1,6 +1,5 @@
-<%= turbo_stream.update :title, model.to_s %>
+<%= turbo_stream.update model_title(model), model.to_s %>
 
-<%= turbo_stream.update :form do %>
-  <%# render "clients/form, client: @client" line %>
+<%= turbo_stream.update_whichever model_form_name(model), :form  do %>
   <%= render "#{model.class.model_name.route_key}/form", model.class.model_name.singular.to_sym => model %>
 <% end %>

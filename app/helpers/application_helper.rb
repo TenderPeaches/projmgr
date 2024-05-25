@@ -11,8 +11,17 @@ module ApplicationHelper
     def action_label(action, object = "")
         # translation_label, must be a valid key from the t() locales
         t_label = "actions.#{action.to_s}"
+        # translation object, like "New [object]"
+        t_object = if object.is_a? String then
+            object
+        elsif object.is_a? ActiveRecord::Base then
+            object.class.model_name.human
+        elsif object.respond_to? :model_name
+            object.model_name.human
+        end
+
         if I18n.exists?(t_label, I18n.locale)
-            t("actions.#{action.to_s}", thing: object)
+            t("actions.#{action.to_s}", thing: t_object)
         end
     end
 
