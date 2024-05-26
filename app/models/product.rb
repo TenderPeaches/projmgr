@@ -4,7 +4,6 @@ class Product < ApplicationRecord
 
     validates :name, presence: true
     validates :cost, presence: true
-    validates :description, presence: true
 
     def self.regular_dev
         Product.first

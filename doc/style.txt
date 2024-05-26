@@ -1,0 +1,14 @@
+Style guidelines:
+    (*) Using .css names for brevity, can be .scss too
+
+* Modification of base HTML tags goes in config/reset.css (or base.css)
+* Modificaiton of common/generic HTML classes goes in config/common.css (or config/[project_name].css)
+* Set variables (colors, sizes, font-sizes, border styles) in config/variables.css
+* General layouts go in layouts (header.css, section.css)
+    (*) A layout should be considered "general" if it is meant to be used with other components. A section or header on their own contain nothing, their only purpose is to be filled with other components. 
+* Specific components go in components, with one file per component
+
+The thing is, sometimes I want a component to be a vertical flex, somtimes a grid. Sometimes I want it bordered. I don't want Tailwind-like attribute tags. Either name some arbitrary combinations like:
+    Panel > border + padding
+    V-Flex > display: flex, vertical
+    

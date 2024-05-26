@@ -10,9 +10,9 @@ module ModelsHelper
         ].join('').html_safe
     end
 
-    def model_edit_action(base_path, label = t('keywords.edit'))
+    def model_edit_action(base_path, label = nil)
         #! maybe there's a safer way to do the route but this works as long as rails routing naming conventions hold
-        turbo_link_button(label, "#{base_path}/edit")
+        turbo_link_button(label || t('keywords.edit'), "#{base_path}/edit")
     end
 
     def model_delete_action(base_path, label = nil)

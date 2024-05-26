@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :shifts, only: [ :index ]
   end
   resources :shifts, only: [ :index, :new, :create, :edit, :update, :destroy ]
-  resources :contacts, only: [ :new, :create, :show ]
+  resources :contacts, except: [ :index ]
   resources :clients
 
   root "projects#index"       # route for /

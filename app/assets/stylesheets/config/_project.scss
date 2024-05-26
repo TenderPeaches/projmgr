@@ -41,3 +41,17 @@ a {
     color: $color-primary-alt-dark;
   }
 }
+
+.v-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/*! just to test, move to its own component once I figure that out */
+.contact {
+  border: var(--border-default);
+  padding: var(--size-s);
+  margin: var(--size-s);
+  display: flex;
+  flex-direction: column;
+}

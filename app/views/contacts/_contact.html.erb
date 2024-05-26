@@ -1,6 +1,13 @@
-<%= render "shared/data", data: [
-    data_pair(Contact.human_attribute_name(:name), contact.name),
-    data_pair(Contact.human_attribute_name(:email), contact.email),
-    data_pair(Contact.human_attribute_name(:phone), contact.phone),
-    data_pair(Contact.human_attribute_name(:notes), contact.notes),
-]%>
+<%= tag.div id: dom_id(contact), class: "contact v-flex" do %>
+    <%= tag.span class: "contact-name" do %>
+        <%= tag.h2 contact.name %>
+    <% end %>
+    <%= render "shared/data", data: [
+        data_pair(Contact.human_attribute_name(:email), contact.email),
+        data_pair(Contact.human_attribute_name(:phone), contact.phone),
+        data_pair(Contact.human_attribute_name(:notes), contact.notes),
+    ]%>
+    <%= tag.div class: "actions" do %>
+        <%= model_edit_delete_actions(contact_path(contact)) %>
+    <% end %>
+<% end %>

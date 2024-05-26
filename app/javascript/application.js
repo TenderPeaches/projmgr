@@ -19,9 +19,6 @@ Turbo.StreamActions.update_whichever = function() {
         // otherwise, use the alt target; if not present, nothing happens
         actual_target = document.querySelector(alt);
     }
-
-    debugger;
-    console.log(actual_target, alt, "templateContent: " + this.templateContent);
     
     // perform the default turbo_stream update on whichever target was first found
     actual_target.replaceChildren(this.templateContent);

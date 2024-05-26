@@ -55,7 +55,7 @@ product__pshpc_standardized_patient_acting = Product.create(name: "Standardized 
 
 # order items - for now, single one is fine
 order_item__custard_wp = OrderItem.create(order: order__custard_wp, product: product__regular_dev_hourly)
-order_item__pshpc = OrderItem.create(order: order__pshpc, product: product)
+order_item__pshpc_training = OrderItem.create(order: order__pshpc, product: product__pshpc_standardized_patient_training)
 
 # expense types
 expense_type__publicity = ExpenseType.create(label: "Advertisement")
@@ -133,4 +133,4 @@ Shift.create(start_dt: DateTime.parse('2023-07-03 18:03 -5', '%Y-%m-%d %I:%M %z'
 Shift.create(start_dt: DateTime.parse('2023-07-05 17:25 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2023-07-05 17:35    -5', '%Y-%m-%d %I:%M %z'), task: task__custardwp_setup, notes: 'Remove unused Wordpress installation', order_item: order_item__custard_wp)
 
 # pshpc
-Shift.create(start_dt: DateTime.parse('2024-04-20 10:30 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2024-04-20 12:00 -5', '%Y-%m-%d %I:%M %z'), task: task__pshpc_training, notes: "Meeting de formation (revue vidéo)", order_item: order_item__pshpc)
+Shift.create(start_dt: DateTime.parse('2024-04-20 10:30 -5', '%Y-%m-%d %I:%M %z'), end_dt: DateTime.parse('2024-04-20 12:00 -5', '%Y-%m-%d %I:%M %z'), task: task__pshpc_training, notes: "Meeting de formation (revue vidéo)", order_item: order_item__pshpc_training)
