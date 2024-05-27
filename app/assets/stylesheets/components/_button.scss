@@ -8,15 +8,15 @@
   padding: var(--size-xxs) var(--size-m);
   border-radius: var(--border-radius);
   background-origin: border-box; // Invisible borders with linear gradients
-  background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
-  border: solid 2px transparent;
   font-weight: bold;
   text-decoration: none;
+  color: $color-white;
+  background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
+  border: solid 2px transparent;
   cursor: pointer;
   outline: none;
   transition: filter 400ms, color 200ms;
   text-align: center;
-  color: $color-white;
 
   a {
     color: $color-white;

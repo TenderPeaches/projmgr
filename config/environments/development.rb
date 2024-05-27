@@ -17,6 +17,7 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  config.assets.precompile += %w( '.svg' )
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
   config.assets.compile = true

@@ -2,7 +2,6 @@
 // Global SASS variables, declaring colors here because CSS variables don't mesh well with SASS transformations for some reason
 
 $color-primary: #7995e1;
-$color-primary-dark: scale-color($color-primary, $lightness: -10%);
 $color-primary-dark: scale-color($color_primary, $lightness: -10%);
 $color-primary-darker: scale-color($color_primary, $lightness: -40%);
 $color-primary-darkest: scale-color($color_primary, $lightness: -60%);
@@ -93,4 +92,37 @@ $font-family: 'Arial', 'Cascadia Code', 'Consolas';
     // Shadows
     --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
     --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
+
+    // Colors 
+    --color-primary: $color-primary;
+    --color-primary-dark: $color-primary-dark;
+    --color-primary-darker: $color-primary-darker;
+    --color-primary-darkest: $color-primary-darkest;
+    --color-primary-light: $color-primary-light;
+    --color-primary-lighter: $color-primary-lighter;
+    --color-primary-lightest: $color-primary-lightest;
+
+    --color-primary-alt: $color-primary-alt;
+    --color-primary-alt-dark: $color-primary-alt-dark;
+    --color-primary-alt-darker: $color-primary-alt-darker;
+    --color-primary-alt-darkest: $color-primary-alt-darkest;
+    --color-primary-alt-light: $color-primary-alt-light;
+    --color-primary-alt-lighter: $color-primary-alt-lighter;
+    --color-primary-alt-lightest: $color-primary-alt-lightest;
+
+    --color-secondary: $color-secondary;
+    --color-secondary-dark: $color-secondary-dark;
+    --color-secondary-darker: $color-secondary-darker;
+    --color-secondary-darkest: $color-secondary-darkest;
+    --color-secondary-light: $color-secondary-light;
+    --color-secondary-lighter: $color-secondary-lighter;
+    --color-secondary-lightest: $color-secondary-lightest;
+
+    --color-secondary-alt: $color-secondary-alt;
+    --color-secondary-alt-dark: $color-secondary-alt-dark;
+    --color-secondary-alt-darker: $color-secondary-alt-darker;
+    --color-secondary-alt-darkest: $color-secondary-alt-darkest;
+    --color-secondary-alt-light: $color-secondary-alt-light;
+    --color-secondary-alt-lighter: $color-secondary-alt-lighter;
+    --color-secondary-alt-lightest: $color-secondary-alt-lightest;
 }

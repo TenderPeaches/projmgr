@@ -49,9 +49,14 @@ a {
 
 /*! just to test, move to its own component once I figure that out */
 .contact {
-  border: var(--border-default);
+  border: 1px solid $color-primary-darkest;
   padding: var(--size-s);
   margin: var(--size-s);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 60% 40%;
+
+  .actions {
+    display: inline-block;
+    text-align: right;
+  }
 }

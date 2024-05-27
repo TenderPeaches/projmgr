@@ -1,13 +1,22 @@
 <%= tag.div id: dom_id(contact), class: "contact v-flex" do %>
-    <%= tag.span class: "contact-name" do %>
-        <%= tag.h2 contact.name %>
-    <% end %>
-    <%= render "shared/data", data: [
+    <%# tag.span class: "contact-name" do %>
+        <%# tag.h2 contact.name %>
+    <%# end %>
+    <%# render "shared/data", data: [
         data_pair(Contact.human_attribute_name(:email), contact.email),
         data_pair(Contact.human_attribute_name(:phone), contact.phone),
         data_pair(Contact.human_attribute_name(:notes), contact.notes),
     ]%>
+    <%= tag.div do %>
+        <%= tag.h3 contact.name %>
+        <%= tag.div contact.email %>
+        <%= tag.div contact.phone %>
+        <%= tag.div contact.notes %>
+    <% end %>
     <%= tag.div class: "actions" do %>
-        <%= model_edit_delete_actions(contact_path(contact)) %>
+        <%# model_edit_delete_actions(contact_path(contact)) %>
+        <%# link_to icon(:edit), class: "button", data: { turbo_stream: true } %>
+        <%= turbo_icon icon_edit, edit_contact_path(contact) %>
+        <%= turbo_icon icon_delete, contact_path(contact), method: :delete %>
     <% end %>
 <% end %>
