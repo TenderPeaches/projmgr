@@ -1,5 +1,4 @@
-<%= render "shared/data", data: [
-  { label: Client.human_attribute_name(:company_name), value: client.company_name }, ] %>
+<%= tag.h2 client.company_name %>
 <%= render client.contacts %>
 <%= tag.div id: "contact-form" %>
 <%= tag.div id: "contact-actions", class: "actions" do %>

@@ -1,3 +1,13 @@
 <%# generic update model action %>
+
+<%# update the page/form title %>
 <%= turbo_stream.update model_title(model), model.class.model_name.human(count: 2) %>
+
+<%# update the element itself to reflect any potential changes %>
+<%= turbo_stream.replace model do %>
+    <%= render model %>
+<% end %>
+
+<%# hide the relevant form 
+%>
 <%= turbo_stream.update_whichever model_form_name(model), :form  %>
