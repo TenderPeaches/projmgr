@@ -13,6 +13,7 @@ module Contacts
         def create(contact_params = {})
             @contact = Contact.create(default_contact_params(contact_params))
             ClientContact.create(client_id: @client_id, contact_id: @contact.id)
+            @contact
         end
 
         private

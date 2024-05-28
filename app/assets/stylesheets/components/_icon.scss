@@ -13,7 +13,7 @@
     svg {
         width: var(--size-l);
         path {
-            fill: $color-primary-lightest;
+            fill: var(--color-primary-lightest);
         }
     }
 }

@@ -10,8 +10,8 @@ header {
   gap: var(--size-xxs);
   justify-content: space-around;
   padding: var(--size-l);
-  border-bottom: 4px solid $color-primary-darkest;
-  background: linear-gradient($color-black, $color-primary-darkest);
+  border-bottom: 4px solid var(--color-primary-darkest);
+  background: linear-gradient(var(--color-black), var(--color-primary-darkest));
 
   .button {
     flex: 1;

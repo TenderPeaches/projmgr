@@ -2,7 +2,7 @@
 
 /* a data element contains bits of data, usually in a `label => value` style */
 .data {
-    border: solid 2px $color_primary_darker;
+    border: solid 2px var(--color-primary-darker);
     font-size: var(--font-size-l);
     margin: var(--size-m);
 }
@@ -13,13 +13,13 @@
 }
 
 .data-row:nth-child(2n) {
-    background: $color-primary-lighter;
+    background: var(--color-primary-lighter);
 }
 
 .data-panel td,
 .data-panel th {
     padding: var(--size-xs);
-    border: solid 1px $color_primary_dark;
+    border: solid 1px var(--color_primary_dark);
 }
 
 .data-label,

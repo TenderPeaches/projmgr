@@ -3,8 +3,8 @@
 
 .error-message {
   width: 100%;
-  color: $color-primary;
-  background-color: $color-background;
+  color: var(--color-primary);
+  background-color: var(--color-background);
   padding: var(--size-xs);
   border-radius: var(--border-radius);
 }

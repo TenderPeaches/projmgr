@@ -10,8 +10,8 @@
   background-origin: border-box; // Invisible borders with linear gradients
   font-weight: bold;
   text-decoration: none;
-  color: $color-white;
-  background: linear-gradient($color-primary-darkest 75%, $color-primary-alt-darkest);
+  color: var(--color-white);
+  background: linear-gradient(var(--color-primary-darkest) 75%, var(--color-primary-alt-darkest));
   border: solid 2px transparent;
   cursor: pointer;
   outline: none;
@@ -19,7 +19,7 @@
   text-align: center;
 
   a {
-    color: $color-white;
+    color: var(--color-white);
   }
 
   a:focus,
@@ -28,11 +28,11 @@
   &:focus,
   &:focus-within,
   &:active {
-    color: $color-white;
+    color: var(--color-white);
     filter: saturate(1.4) brightness(115%);
   }
   a:hover {
-    color: $color-secondary;
+    color: var(--color-secondary);
   }
 
   &:hover,
@@ -44,42 +44,42 @@
 
   /* button--secondary, call-to-action */
   &--secondary {
-    color: $color-white;
-    background: linear-gradient($color-secondary-dark 75%, $color-secondary-alt-dark), $color-secondary-alt;
+    color: var(--color-white);
+    background: linear-gradient(var(--color-secondary-dark) 75%, var(--color-secondary-alt-dark), var(--color-secondary-alt));
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: $color-white;
+      color: var(--color-white);
       filter: saturate(1.2) brightness(110%);
     }
   }
 
   /* button--light, cancel */
   &--light {
-    color: $color-dark;
-    background: $color-light;
+    color: var(--color-dark);
+    background: var(--color-light);
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      $background: $color-primary-lightest;
+      $background: var(--color-primary-lightest);
     }
   }
 
   /* button--dark */
   &--dark {
-    color: $color-white;
-    border-color: $color-dark;
-    background-color: $color-dark;
+    color: var(--color-white);
+    border-color: var(--color-dark);
+    background-color: var(--color-dark);
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: $color-white;
+      color: var(--color-white);
     }
   }
 }

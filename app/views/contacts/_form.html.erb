@@ -1,4 +1,4 @@
-<%= model_form_with(model: contact, class: 'form', url: (contact.new_record? ?contacts_path(client_id: options[:client_id] || nil) : contact_path(contact))) do |form| %>
+<%= model_form_with(model: contact, class: 'form', url: (contact.new_record? ? contacts_path(client_id: options[:client_id] || nil) : contact_path(contact))) do |form| %>
     <%= render "contacts/fields", form: form %>
 
     <%= tag.div class: "actions" do %>

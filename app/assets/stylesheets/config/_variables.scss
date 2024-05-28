@@ -1,52 +1,8 @@
 
-// Global SASS variables, declaring colors here because CSS variables don't mesh well with SASS transformations for some reason
-
-$color-primary: #7995e1;
-$color-primary-dark: scale-color($color_primary, $lightness: -10%);
-$color-primary-darker: scale-color($color_primary, $lightness: -40%);
-$color-primary-darkest: scale-color($color_primary, $lightness: -60%);
-$color-primary-light: scale-color($color_primary, $lightness: 10%);
-$color-primary-lighter: scale-color($color_primary, $lightness: 40%);
-$color-primary-lightest: scale-color($color_primary, $lightness: 60%);
-
-$color-primary-alt: #476edb;
-$color-primary-alt-dark: scale-color($color-primary-alt, $lightness: -10%);
-$color-primary-alt-darker: scale-color($color-primary-alt, $lightness: -40%);
-$color-primary-alt-darkest: scale-color($color-primary-alt, $lightness: -60%);
-$color-primary-alt-light: scale-color($color-primary-alt, 10%);
-$color-primary-alt-lighter: scale-color($color-primary-alt, 40%);
-$color-primary-alt-lightest: scale-color($color-primary-alt, 60%);
-
-$color-secondary: #d8a85b;
-$color-secondary-dark: scale-color($color-secondary, $lightness: -10%);
-$color-secondary-darker: scale-color($color-secondary, $lightness: -40%);
-$color-secondary-darkest: scale-color($color-secondary, $lightness: -60%);
-$color-secondary-light: scale-color($color-secondary, 10%);
-$color-secondary-lighter: scale-color($color-secondary, 40%);
-$color-secondary-lightest: scale-color($color-secondary, 60%);
-
-$color-secondary-alt: #d87c5b;
-$color-secondary-alt-dark: scale-color($color-secondary-alt, $lightness: -10%);
-$color-secondary-alt-darker: scale-color($color-secondary-alt, $lightness: -40%);
-$color-secondary-alt-darkest: scale-color($color-secondary-alt, $lightness: -60%);
-$color-secondary-alt-light: scale-color($color-secondary-alt, 10%);
-$color-secondary-alt-lighter: scale-color($color-secondary-alt, 40%);
-$color-secondary-alt-lightest: scale-color($color-secondary-alt, 60%);
-
-$color-background: $color-primary-light ;
-$color-glint: hsl(210, 100%, 82%);
-$color-white: #fff;
-$color-black: #000;
-$color-dark: hsl(0, 1%, 16%); 
-$color-light: hsl(0, 6%, 93%);
-
-$color-text: $color-primary-darker;
-$color-border: $color-primary-darkest;
-
-$font-family: 'Arial', 'Cascadia Code', 'Consolas';
 
 :root {
     // Font families
+    --font-family: 'Arial', 'Cascadia Code', 'Consolas';
     --font-famliy-code: 'Cascadia Code', 'Consolas', 'Arial';
 
     // Classical line heights
@@ -75,63 +31,85 @@ $font-family: 'Arial', 'Cascadia Code', 'Consolas';
     --size-xxxl: 3rem;    // 48px
     --size-xxxxl: 4rem;   // 64px
 
+    // Colors
+    // Main palette
+    --color-primary-white: hsl(224, 63%, 85%);
+    --color-primary-lightest: hsl(224, 63%, 76%);
+    --color-primary-lighter: hsl(224, 63%, 68%);
+    --color-primary-light: hsl(224, 63%, 60%);
+    --color-primary: hsl(224, 63%, 52%);
+    --color-primary-dark: hsl(224, 63%, 42%);
+    --color-primary-darker: hsl(224, 63%, 32%);
+    --color-primary-darkest: hsl(224, 63%, 20%);
+    --color-primary-black: hsl(224, 63%, 10%);
+
+    --color-primary-alt-white: hsl(212, 45%, 85%);
+    --color-primary-alt-lightest: hsl(212, 45%, 76%);
+    --color-primary-alt-lighter: hsl(212, 45%, 68%);
+    --color-primary-alt-light: hsl(212, 45%, 60%);
+    --color-primary-alt: hsl(212, 45%, 57%);
+    --color-primary-alt-dark: hsl(212, 45%, 42%);
+    --color-primary-alt-darker: hsl(212, 45%, 32%);
+    --color-primary-alt-darkest: hsl(212, 45%, 20%);
+    --color-primary-alt-black: hsl(212, 45%, 10%);
+
+    --color-secondary-white: hsl(33, 78%, 85%);
+    --color-secondary-lightest: hsl(33, 78%, 76%);
+    --color-secondary-lighter: hsl(33, 78%, 68%);
+    --color-secondary-light: hsl(33, 78%, 60%);
+    --color-secondary: hsl(33, 78%, 60%);
+    --color-secondary-dark: hsl(33, 78%, 42%);
+    --color-secondary-darker: hsl(33, 78%, 32%);
+    --color-secondary-darkest: hsl(33, 78%, 20%);
+    --color-secondary-black: hsl(33, 78%, 10%);
+
+    --color-secondary-alt-white: hsl(19, 66%, 85%);
+    --color-secondary-alt-lightest: hsl(19, 66%, 76%);
+    --color-secondary-alt-lighter: hsl(19, 66%, 68%);
+    --color-secondary-alt-light: hsl(19, 66%, 60%);
+    --color-secondary-alt: hsl(19, 66%, 57%);
+    --color-secondary-alt-dark: hsl(19, 66%, 42%);
+    --color-secondary-alt-darker: hsl(19, 66%, 32%);
+    --color-secondary-alt-darkest: hsl(19, 66%, 20%);
+    --color-secondary-alt-black: hsl(19, 66%, 10%);
+
+    // Generic colors
+    --color-glint: hsl(210, 100%, 82%);
+    --color-white: #fff;
+    --color-black: #000;
+    --color-dark: hsl(0, 1%, 16%); 
+    --color-light: hsl(0, 6%, 93%);
+    --color-error: hsl(0, 100%, 42%);
+    --color-warning: hsl(46, 93%, 52%);
+    --color-success: hsl(113, 100%, 33%);
+
+    // Text colors
+    --color-text-header:        var(--color-primary-black);
+    --color-text-body:          var(--color-primary-darkest);
+    --color-text-muted:         var(--color-primary-alt-lighter);
+    --color-background:         var(--color-primary-lighter);
+    --color-border-primary:     var(--color-primary-darkest);
+    --color-border-secondary:   var(--color-primary);
+
+    // Border radius
+    --border-radius: 0.375rem;
+
+    // Borders
+    --border-default: solid 1px var(--color-light);
+    --border-default-dark: solid 1px var(--color-primary-darker);
+    --border-thick: solid 2px var(--color-light);
+    --border-thick-dark: solid 2px var(--color-primary-darker);
+
     // Shadows
     --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
     --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
 
-
     // Border radius
     --border-radius: 0.375rem;
 
     // Borders
-    --border-default: solid 1px $color-light;
-    --border-default-dark: solid 1px $color-primary-darker;
-    --border-thick: solid 2px $color-light;
-    --border-thick-dark: solid 2px $color-primary-darker;
-    // Colors 
-    --color-primary: #7995e1;
-    --color-primary-dark: scale-color($color_primary, $lightness: -10%);
-    --color-primary-darker: $color-primary-darker;
-    --color-primary-darkest: $color-primary-darkest;
-    --color-primary-light: $color-primary-light;
-    --color-primary-lighter: $color-primary-lighter;
-    --color-primary-lightest: $color-primary-lightest;
-
-    --color-primary-alt: $color-primary-alt;
-    --color-primary-alt-dark: $color-primary-alt-dark;
-    --color-primary-alt-darker: $color-primary-alt-darker;
-    --color-primary-alt-darkest: $color-primary-alt-darkest;
-    --color-primary-alt-light: $color-primary-alt-light;
-    --color-primary-alt-lighter: $color-primary-alt-lighter;
-    --color-primary-alt-lightest: $color-primary-alt-lightest;
-
-    --color-secondary: $color-secondary;
-    --color-secondary-dark: $color-secondary-dark;
-    --color-secondary-darker: $color-secondary-darker;
-    --color-secondary-darkest: $color-secondary-darkest;
-    --color-secondary-light: $color-secondary-light;
-    --color-secondary-lighter: $color-secondary-lighter;
-    --color-secondary-lightest: $color-secondary-lightest;
-
-    --color-secondary-alt: $color-secondary-alt;
-    --color-secondary-alt-dark: $color-secondary-alt-dark;
-    --color-secondary-alt-darker: $color-secondary-alt-darker;
-    --color-secondary-alt-darkest: $color-secondary-alt-darkest;
-    --color-secondary-alt-light: $color-secondary-alt-light;
-    --color-secondary-alt-lighter: $color-secondary-alt-lighter;
-    --color-secondary-alt-lightest: $color-secondary-alt-lightest;
-
-    // Text colors
-    --color-text-header: $color-primary-darkest;
-    --color-text-body:   $color-primary-darker;
-    --color-text-muted:  $color-primary-light;
-
-    // Border radius
-    --border-radius: 0.375rem;
-
-    // Borders
-    --border-default: solid 1px $color-light;
-    --border-default-dark: solid 1px $color-primary-darker;
-    --border-thick: solid 2px $color-light;
-    --border-thick-dark: solid 2px $color-primary-darker;
+    --border-default: solid 1px var(--color-light);
+    --border-default-dark: solid 1px var(--color-primary-darker);
+    --border-thick: solid 2px var(--color-light);
+    --border-thick-dark: solid 2px var(--color-primary-darker);
 }

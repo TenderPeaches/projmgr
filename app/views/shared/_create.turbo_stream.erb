@@ -5,3 +5,8 @@
 
 <%# empty the relevant form %>
 <%= turbo_stream.update_whichever model_form_name(model), :form  %>
+
+<%# add the created model to the list %>
+<%= turbo_stream.append model.model_name.plural.kebabcase do %>
+    <%= render model %>
+<% end %>
