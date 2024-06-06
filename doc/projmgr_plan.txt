@@ -1,0 +1,17 @@
+HeaderMenu: Navigation  
+    Projets: 
+        List All Projects
+        New Project Button>
+            Project Form
+                Add Client Button>
+                    Client Form
+    Clients:
+        List All Clients
+        New Client Button>
+            Client Form
+                Add Contact Button>
+                    Contact Form
+        Show Client
+            List Projects
+            Add Project
+            Show Account Info

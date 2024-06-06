@@ -1,6 +1,5 @@
 <%= model_form_with(model: project, class: 'form') do |form| %>
   <%= render "projects/fields", form: form %>
-
   <%= tag.div class: "actions" do %>
     <%= form.submit %>
   <% end %>

@@ -29,7 +29,113 @@ class ModelFormBuilder < ActionView::Helpers::FormBuilder
         collection_of(:check_boxes, attribute, options)
     end
 
+    def dynamic_submodel_fields association
+        options = {
+            associated_class: object.class.reflect_on_association(association).klass,
+            partial:
+        }
+    end
+
+    # for associations that point towards a single member (1->1 or n->1)
+    def dynamic_single_submodel_fields
+
+    end
+
+    # for associations that point towrads multiple members (1->n)
+    def dynamic_multiple_submodel_fields
+
+    end
+
+    def associated_fields_for association, add_label = nil, partial: nil, path: nil
+
+        @template.tag.div id: field_id(association) do
+            fields_for association do |association_form|
+                @template.render(partial, form: association_form)
+            end
+        end.concat(@template.link_to add_label, path, data: { turbo_stream: true })
+    end
+
+    # if the object is associated to other models, they can have their own subsection of a form
+    # the subsection typically includes:
+    #   * a selection input for the submodel:
+    #       usually a Select or Radio Buttons for single associations, select or checkboxes or custom components for multiple
+    #       for now this is kept outside of this form builder, could be added here
+    #   * an "add [model]" button in case the user can add the given model and the intended model does not exist yet
+    #   * a space for the submodel's form, which is displayed only as necessary
+    def associated_model_subform_anchor association, options: {}
+
+        options.assert_valid_keys(:partials, :add_label, :add_path, :format)
+        options = associated_model_subform_options(association).merge(options)
+
+        # the whole subform will exist within a turbo_frame (can be made a div if it turns out not te be necessary, but at least it will only need to be changed here)
+        @template.turbo_frame_tag model_html_id(association) do
+            # contents of the subform
+            safe_join [
+                # an empty "client-title" ID div, to be filled with the subform title once expanded
+                @template.tag.div(id: model_html_id(association, :title)),
+                # an empty "client-form" ID div, to be filled with the subform fields once expanded
+                @template.tag.div(id: model_html_id(association, :form)),
+                # an "Add Client" button, to expand the subform when clicked in order to allow the user to create a new submodel alongside the original model
+                @template.link_to(options[:add_options][:label], options[:add_options][:path], class: "button", data: { turbo_stream: true })
+            ]
+        end
+    end
+
+    def associated_model_subform association
+        fields_for association do |association_form|
+            @template.render("#{association_class.model_name.collection}/fields", form: association_form)
+        end
+    end
+
     private
+    def cached_helpers
+        Class.new do
+            include Rails.application.routes.url_helpers
+            include Rails.application.routes.mounted_helpers
+        end.new
+    end
+
+    def model_html_id(model, suffix = "")
+        html_id = if model.is_a? String
+            model.kebabcase
+        elsif model.is_a? ActiveRecord::Base || model.respond_to?(model_name)
+            model.model_name.singular.kebabcase
+        else
+            model.to_s.kebabcase
+        end
+
+        # model-suffix, or only model if no suffix is provided
+        "#{html_id}#{suffix.present? ? "-#{suffix.to_s.kebabcase}" : ""}"
+    end
+
+    # attribute_names, index?
+    def associated_model_subform_options(association, name = nil)
+        association_class = object.class.reflect_on_association(association).klass
+        partial = "#{association_class.model_name.collection}/fields"
+        add_options = {
+            label: "New #{association_class.model_name.human}",
+            #path: "#{association_class.model_name.collection}/new?name=#{field_name()}"
+            path: cached_helpers.send("new_#{association_class.model_name.singular}_path", name: name || field_name(association))
+        }
+
+        return { association_class:, partial:, add_options: }
+    end
+
+=begin
+    # attribute_names, index?
+    def associated_model_subform_options(association, field_name = "")
+        association_class = object.class.reflect_on_association(association).klass
+        partial = "#{association_class.model_name.collection}/fields"
+        add_options = {
+            label: "New #{association_class.model_name.human}",
+            #path: "#{association_class.model_name.collection}/new?name=#{field_name()}"
+            path: public_send("new_#{association_class.model_name.singular}_path(name: #{field_name(association)})")
+        }
+
+        return { association_class:, partial:, add_options: }
+    end
+=end
+
     def object_type_for_attribute(attribute)
         # if @object defines an attribute
         result = if @object.respond_to?(:type_for_attribute) && @object.has_attribute?(attribute)

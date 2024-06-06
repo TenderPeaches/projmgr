@@ -1,0 +1,11 @@
+PROJECT.form =>
+    Calls model_form_builder.associated_model_subform_anchor
+    The ANCHOR creates a "new association" button, with path new_client_path
+        That PATH needs to indicate that it originated from a PROJECT form so that when the CLIENT form loads in, it is loaded as a subform of the PROJECT form 
+            as in new_client_path(name: "project[client_attributes]") or something
+        THEN, when clients#new creates a form, it can go through the "name" attribute to deduct:   
+            Declare a PROJECT form, then fields_for the CLIENT, and pass @form down to the view which can feed that as the form parameter for the fields view
+    Within the CLIENT fields, is another ANCHOR with path new_contact_path
+        That PATH needs to indicate that it originated from a PROJECT form CLIENT subform
+        so new_contact_path(name: project[client_attributes][index][contact_attributes])
+    

@@ -1,10 +1,13 @@
 class Project < ApplicationRecord
   belongs_to :client
+  has_many :contacts, through: :client
   has_many :tasks
   has_many :shifts, through: :tasks
   has_many :events
 
   scope :active, -> { where active: true }
+
+  accepts_nested_attributes_for :client, :contacts
 
   # after_save :generate_tasks # not sure if implementing like this for now, don't debug - tasks can be created manually for now, not too much overhead
 

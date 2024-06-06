@@ -1,0 +1,14 @@
+<%= tag.div class: "client-projects" do %>
+  <%= tag.h3 "#{Project.model_name.human(count: 2)}" %>
+  <%= tag.div id: "projects" do %>
+    <% if client.projects.any? %>
+      <%= render client.projects %>
+    <% else %>
+      <%= "This client is not linked to any project" %>
+    <% end %>
+  <% end %>
+  <%= tag.div id: "project-actions", class: "actions" do %>
+      <%= link_button_to action_label(:new, Project.model_name.human), new_project_path(client_id: client.id) %>
+  <% end %>
+  <%= tag.div id: "project-data" %>
+<% end %>

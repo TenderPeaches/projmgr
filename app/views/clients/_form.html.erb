@@ -1,7 +1,8 @@
 <%= model_form_with(model: client, class: 'form') do |form| %>
     <%= render "clients/fields", form: form %>
 
-    <%= tag.div do %>
+    <%= turbo_frame_tag :contacts do %>
+        <% debugger %>
         <%= turbo_link_button action_label(:new, Contact.new), new_contact_path(client: client) %>
         <%= tag.div id: "contact-form" %>
         <%= tag.div id: "contacts" %>

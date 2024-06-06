@@ -1,10 +1,1 @@
-<%= tag.h1 "Projects", id: "title" %>
-<%= tag.div class: "actions" do %>
-  <%= turbo_link_button "New project", new_project_path %>
-<% end %>
-<%= tag.div id: "data" %>
-<%= tag.div id: "form" %>
-<%= tag.div id: "projects" do %>
-  <%= render "projects/list", projects: @projects %>
-<% end %>
-
+<%= render "shared/index", model: Project.new, models: @projects %>

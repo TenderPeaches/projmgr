@@ -2,5 +2,14 @@
 <%= turbo_stream.update model_title(model), action_label(:new, model.class.model_name.human) %>
 
 <%= turbo_stream.update_whichever model_form_name(model), :form do %>
-  <%= render "#{model.class.model_name.route_key}/form", model.class.model_name.singular.to_sym => model, options: (defined?(form_options) ? form_options : {}) %>
+
+  <%#(!) here needs to figure out how to get fields-for (basically how to get the form back)
+    we can either make it as a controller function (which makes the most semantic sense) but also maybe just some model_helper? model_form? model_root_form_tag? %>
+  
+  <%# if a form name has been specified, the form is to be rendered as a subform of another form, with form_options[:name] to be set as the form's fields' name HTML attribute, like name="project[clients][0][...]" %>
+  <% if local_assigns[:form_options] && local_assigns[:form_options].has_key?(:name) %>
+    <%= render "#{model.class.model_name.route_key}/fields", model.class.model_name.singular.to_sym => model, form: model_association_form(form_options[:name]) %>
+  <% else %>
+    <%= render "#{model.class.model_name.route_key}/form", model.class.model_name.singular.to_sym => model %>
+  <% end %>
 <% end %>

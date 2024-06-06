@@ -1,0 +1,11 @@
+<%= tag.div class: "client-contacts" do %>
+  <%= tag.h3 "#{Contact.model_name.human(count: 2)}" %>
+  <%= tag.div id: "contacts" do %>
+    <%= render client.contacts %>
+  <% end %>
+  <%= tag.div id: "contact-form" %>
+  <%= tag.div id: "contact-actions", class: "actions" do %>
+      <%= turbo_link_button action_label(:new, Contact.model_name.human), new_contact_path(client_id: client.id) %>
+  <% end %>
+  <%= tag.div id: "contact-data" %>
+<% end %>

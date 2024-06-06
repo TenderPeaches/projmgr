@@ -33,7 +33,7 @@ module ModelsHelper
     end
 
     def model_title(model)
-        "#{model.class.model_name.plural.kebabcase}-title"
+        "#{model.class.model_name.singular.kebabcase}-title"
     end
 
     def model_form_for(name, *args, &block)
@@ -66,6 +66,45 @@ module ModelsHelper
         end
 
         "#{model_class.model_name.singular.kebabcase}-form"
+    end
+
+    # association => the submodel instance (like Client.new, for a Project.new.client form, for instance)
+    # form_name => a string that matches the input elements HTML name attribute, like "project[client][contacts][0][coordinate]"
+    def model_association_form(form_name = "")
+        # isolate the original model class from the submodels
+        form_model, *nested_attributes = form_name.split(/\[|\]/).compact_blank
+
+        # simulate the top-level form using a new instance of form_model
+        fields form_model.classify.constantize.new do |form|
+            # recursively build the subforms, going as deep as needed to reach the association model form
+            nested_form_builder_for form, nested_attributes do |nested_form|
+                # run once for the last iteration (the association model)
+                return nested_form
+            end
+        end
+    end
+
+    private
+    def nested_form_builder_for form, *nested_attributes, &block
+
+        # fetch the attribute and potential index from the nested attributes
+        attribute, index = nested_attributes.flatten!.shift(2)
+
+        if attribute.blank?
+            # if running out of attributes, render the last form builder instance to generate the response
+            yield form
+            return
+        end
+
+        # get the assoication from the attribute name, if applicable
+        association = attribute.chomp("_attributes")
+
+        # set the index, generate a unique one if none was provided in the nested attributes
+        child_index = index || Process.clock_gettime(Process::CLOCK_REALTIME, :millisecond)
+
+        form.fields_for association, association.classify.constantize.new, child_index: do |association_form|
+            nested_form_builder_for association_form, nested_attributes, &block
+        end
     end
 end
 

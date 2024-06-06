@@ -10,6 +10,7 @@ class ClientsController < ApplicationController
 
     def new
         @client = Clients::Creator.new.build
+        set_form_name
     end
 
     def edit

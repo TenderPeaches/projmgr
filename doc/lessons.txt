@@ -1,0 +1,5 @@
+* Dealing with nested submodel forms, without needing to replicate a bunch of views. A form is a form, it should be up to the controller to figure out which form to load into the view.
+    https://stackoverflow.com/questions/71713303/rails-7-dynamic-nested-forms-with-hotwire-turbo-frames
+    Hints:
+        * Use Turbo-Frames over the subform, reload turbo_frame only
+        * Use Turbo-Stream to morph the subform in/out

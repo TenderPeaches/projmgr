@@ -1,4 +1,1 @@
-<%= tag.nav do %>
-  <%= link_button_to "Back to projects", projects_path %>
-<% end %>
-<%= render @project %>
+<%= render "shared/show", model: @project %>
